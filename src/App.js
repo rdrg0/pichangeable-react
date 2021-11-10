@@ -1,5 +1,4 @@
 import { Global, css } from "@emotion/react";
-import { FontTitle, FontSizeBig, FontSizeMedium, FontMediumGreen, FontHeaderLabel, FontSizeSmall } from "./component/UI/Typography";
 
 const globalCSS = css`
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
@@ -32,12 +31,6 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
-      <FontTitle>Encuentra tu cancha ideal</FontTitle>
-      <FontSizeBig>Encuentra tu cancha ideal</FontSizeBig>
-      <FontSizeMedium>Encuentra tu cancha ideal</FontSizeMedium>
-      <FontMediumGreen>Encuentra tu cancha ideal</FontMediumGreen>
-      <FontHeaderLabel>Encuentra tu cancha ideal</FontHeaderLabel>
-      <FontSizeSmall>Encuentra tu cancha ideal</FontSizeSmall>
     </>
   );
 }
