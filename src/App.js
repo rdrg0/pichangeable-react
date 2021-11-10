@@ -31,7 +31,6 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
-      <div>Holiii</div>
     </>
   );
 }
