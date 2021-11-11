@@ -1,4 +1,5 @@
 import { Global, css } from "@emotion/react";
+import { Footer } from "./component/Footer";
 
 const globalCSS = css`
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
@@ -31,6 +32,7 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
+      <Footer />
     </>
   );
 }
