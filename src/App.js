@@ -3,6 +3,7 @@ import Header from "./component/Header";
 import { Footer } from "./component/Footer";
 import Card from "./component/Card";
 import { Search } from "./component/Search";
+import Signup from "./pages/SignUp";
 
 
 const globalCSS = css`
@@ -38,8 +39,7 @@ function App() {
     <>
       <Global styles={globalCSS} />
       <Header />
-      <Search/>
-      <Card />
+      <Signup/>
       <Footer />
     </>
   );

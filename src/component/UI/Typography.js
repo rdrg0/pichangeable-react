@@ -76,3 +76,13 @@ export const TitleGreen = styled.h2`
   font-style:bold;
   text-align: center;
 `;
+
+
+export const LabelForm = styled.label`
+  font-family: 'Inter', sans-serif;
+  color: var(--dark-gray);
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+`;
