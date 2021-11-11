@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { LabelForm} from "../component/UI/Typography"
 import { ButtonGreen } from "../component/UI/Buttons"
 
-const PageSignUp = styled.div`
+const Login = styled.div`
     display:flex;
     height: 704px;
     background: rgb(0,0,0);
@@ -15,7 +15,7 @@ const ContainerForm = styled.div`
     display: flex;
     flex-direction: column;
     width: 380px;
-    height: 468px;
+    height: 268px;
     background: white;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -39,7 +39,6 @@ const FormData = styled.form`
     padding: 8px;
     button{
         margin-top:4px;
-        width: 213px;
         align-self: center;
     }
 `
@@ -57,24 +56,18 @@ const Input = styled.input`
 export default function Signup() {
     return (
         <>
-          <PageSignUp>  
+          <Login>  
             <ContainerForm>
-                <Title>Create your Account</Title>
+                <Title>Login with your Account</Title>
                 <FormData>
-                    <LabelForm>Name</LabelForm>
-                    <Input type="text" placeholder="Aldito Cuba" ></Input>
                     <LabelForm>Enail</LabelForm>
                     <Input type="email" placeholder="elgatocanales@mail.com" ></Input>
-                    <LabelForm>Phone</LabelForm>
-                    <Input type="phone" placeholder="951236547" ></Input>
                     <LabelForm>Password</LabelForm>
                     <Input type="password" placeholder="********" ></Input>
-                    <LabelForm>Password Confirmation</LabelForm>
-                    <Input type="password" placeholder="********" ></Input>
-                    <ButtonGreen>Create account</ButtonGreen>
+                    <ButtonGreen>Sign In</ButtonGreen>
                 </FormData>
             </ContainerForm>
-            </PageSignUp>  
+            </Login>  
         </>
     )
 
