@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import {JoinIcon , LoginIcon, LupitaIcon} from "./UI/Icons";
 import {ButtonWhite , ButtonGreen} from "./UI/Buttons";
 import { TitleGreen,TitleGray } from "./UI/Typography";
-
+import logo  from "./UI/logo.png";
 const HeaderContainer = styled.div`
     padding: unset;
     display: grid;
@@ -23,6 +23,12 @@ const HeaderContainer = styled.div`
         margin:20px;
         display:flex;
         flex-direction: row;
+        align-items: center;
+        img{
+            height:70px;
+            width:70px;
+            margin: initial;
+        }
     }
 `
 const ContainerSearch = styled.div`
@@ -60,6 +66,7 @@ export default function Header(){
     return(        
         <HeaderContainer>
             <div className="logo">
+                    <img src={logo} alt="logo de pichangueable"/>
                     <TitleGray>Pichangue</TitleGray>
                     <TitleGreen>able</TitleGreen>
             </div>
