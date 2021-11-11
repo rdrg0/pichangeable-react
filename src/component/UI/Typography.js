@@ -36,6 +36,15 @@ export const FontMediumGreen = styled.h5`
   text-align: center;
 `;
 
+export const FontMediumGray = styled.h5`
+  font-family: 'Montserrat', sans-serif;
+  color: var(--dark-gray);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+  text-align: center;
+`;
+
 export const FontHeaderLabel = styled.h6`
   font-family: 'Inter', sans-serif;
   color: var(--grey);
@@ -49,7 +58,7 @@ export const FontHeaderLabel = styled.h6`
   text-align: center;
 `;
 
-export const FontSizeSmall = styled.div`
+export const FontSizeSmall = styled.label`
   font-family: 'Inter', sans-serif;
   color: var(--grey);
   font-weight: 400;

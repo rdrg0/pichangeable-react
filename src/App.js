@@ -4,7 +4,7 @@ import { Footer } from "./component/Footer";
 import Card from "./component/Card";
 import { Search } from "./component/Search";
 import Login from "./pages/Login";
-
+import SignFlow from "./pages/SignFlow";
 
 const globalCSS = css`
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
@@ -39,7 +39,7 @@ function App() {
     <>
       <Global styles={globalCSS} />
       <Header />
-      <Login/>
+      <SignFlow/>
       <Footer />
     </>
   );
