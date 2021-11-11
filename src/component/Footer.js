@@ -10,7 +10,7 @@ export const Footer = () => {
 
           <DivFooter>
             <FontHeaderLabel>© 2021 - Pichangueable</FontHeaderLabel>
-            <FontHeaderLabel>Codeable - Cohort 3 Final Project</FontHeaderLabel>
+            <FontHeaderLabel>Codeable - Cohort 4 Final Project</FontHeaderLabel>
           </DivFooter>
 
           <DivFooter>
