@@ -1,12 +1,15 @@
 import { Global, css } from "@emotion/react";
 import Header from "./component/Header";
 import { Footer } from "./component/Footer";
+import Card from "./component/Card";
+import { Search } from "./component/Search";
 
 
 const globalCSS = css`
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
 
   :root {
+    --white: #FFFFFF;
     --dark-green: #2F855A;
     --light-green: #48BB78;
     --green: #68D391;
@@ -35,9 +38,9 @@ function App() {
     <>
       <Global styles={globalCSS} />
       <Header />
-  
+      <Search/>
+      <Card />
       <Footer />
-
     </>
   );
 }
