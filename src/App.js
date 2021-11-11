@@ -37,11 +37,10 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
+      <Header />
       <Search/>
       <Card />
-      <Header />
       <Footer />
-
     </>
   );
 }
