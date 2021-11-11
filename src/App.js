@@ -1,10 +1,19 @@
+import React from "react";
 import { Global, css } from "@emotion/react";
-import Header from "./component/Header";
-import { Footer } from "./component/Footer";
-import Card from "./component/Card";
-import { Search } from "./component/Search";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Header from "./component/Header";
+// import { Footer } from "./component/Footer";
+// import Card from "./component/Card";
+// import { Search } from "./component/Search";
+// import { TeamProfiles } from "./component/TeamProfiles";
 import Login from "./pages/Login";
+<<<<<<< HEAD
 import SignFlow from "./pages/SignFlow";
+=======
+import Signup from "./pages/SignUp";
+import { NotFound } from "./pages/NotFound";
+
+>>>>>>> 7f30d0843195cc479db7f006e16da9eea2fadb0c
 
 const globalCSS = css`
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
@@ -38,9 +47,17 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
-      <Header />
-      <SignFlow/>
-      <Footer />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          {/* <Route path="/index" component={IndexField} />
+          <Route path="/newfield" component={NewField} />
+          <Route path="/editfield" component={EditField} /> */}
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
     </>
   );
 }
