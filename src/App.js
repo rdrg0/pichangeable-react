@@ -3,6 +3,7 @@ import Header from "./component/Header";
 import { Footer } from "./component/Footer";
 import Card from "./component/Card";
 import { Search } from "./component/Search";
+import { TeamProfiles } from "./component/TeamProfiles";
 import Login from "./pages/Login";
 
 
@@ -38,8 +39,7 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
-      <Header />
-      <Login/>
+      <TeamProfiles />
       <Footer />
     </>
   );
