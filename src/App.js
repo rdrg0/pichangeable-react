@@ -1,10 +1,14 @@
+import React from "react";
 import { Global, css } from "@emotion/react";
-import Header from "./component/Header";
-import { Footer } from "./component/Footer";
-import Card from "./component/Card";
-import { Search } from "./component/Search";
-import { TeamProfiles } from "./component/TeamProfiles";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Header from "./component/Header";
+// import { Footer } from "./component/Footer";
+// import Card from "./component/Card";
+// import { Search } from "./component/Search";
+// import { TeamProfiles } from "./component/TeamProfiles";
 import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
+import { NotFound } from "./pages/NotFound";
 
 
 const globalCSS = css`
@@ -39,8 +43,17 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
-      <TeamProfiles />
-      <Footer />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          {/* <Route path="/index" component={IndexField} />
+          <Route path="/newfield" component={NewField} />
+          <Route path="/editfield" component={EditField} /> */}
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
     </>
   );
 }

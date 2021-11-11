@@ -87,7 +87,8 @@ const Icons = styled.div`
   flex-direction: row;
   justify-content:center;
   align-items: flex-end;
-  gap: 25%;
+  margin-top: 5%;
+  gap: 15%;
   width: 100%;
   height: 10%;
 `;
