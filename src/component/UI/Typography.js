@@ -39,6 +39,10 @@ export const FontMediumGreen = styled.h5`
 export const FontHeaderLabel = styled.h6`
   font-family: 'Inter', sans-serif;
   color: var(--grey);
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
