@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 /** @jsxImportSource @emotion/react */
 import cancha  from "./UI/cancha8.jpg"
-import { FontHeaderLabel, FontSizeBig,  FontSizeMedium, FontSizeSmall} from "./UI/Typography";
+import {  FontSizeBig,  FontSizeMedium } from "./UI/Typography";
 
 const Card = styled.li`
     padding: unset;

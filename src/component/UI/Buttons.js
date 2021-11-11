@@ -12,8 +12,8 @@ export const ButtonGreen = styled.button`
   font-size: 18px;
   line-height: 24px;
   text-align: center;
-    letter-spacing: 1.25px;
-    text-transform: uppercase;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
   cursor: pointer;
   svg{
     margin: auto;

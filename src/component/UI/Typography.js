@@ -53,3 +53,22 @@ export const FontSizeSmall = styled.div`
   line-height: 16px;
   text-align: center;
 `;
+
+
+export const TitleGray = styled.h2`
+  font-family: 'Inter', sans-serif;
+  color: var(--dark-gray);
+  font-size: 36px;
+  line-height: 48px;
+  font-style:bold;
+  text-align: center;
+`;
+
+export const TitleGreen = styled.h2`
+  font-family: 'Inter', sans-serif;
+  color: var(--dark-green);
+  font-size: 36px;
+  line-height: 48px;
+  font-style:bold;
+  text-align: center;
+`;
