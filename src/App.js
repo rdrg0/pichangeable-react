@@ -1,4 +1,5 @@
 import { Global, css } from "@emotion/react";
+import { Footer } from "./component/Footer";
 import Card from "./component/Card";
 
 const globalCSS = css`
@@ -33,6 +34,7 @@ function App() {
     <>
       <Global styles={globalCSS} />
       <Card />
+      <Footer />
 
     </>
   );
