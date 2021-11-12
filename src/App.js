@@ -44,7 +44,6 @@ const globalCSS = css`
 function App() {
   return (
     <>
-        <Maps />
       <Global styles={globalCSS} />
       <Router>
         <Switch>

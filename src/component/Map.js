@@ -1,7 +1,7 @@
-import React, { Component } from "react";
 import GoogleMaps from "simple-react-google-maps";
-export default class Maps extends Component {
-  render() {
+export default function Maps ({x,y}) {
+    let lat= parseFloat(x);
+    let lon= parseFloat(y);
     return (
       <div className="container">
         <GoogleMaps
@@ -9,14 +9,13 @@ export default class Maps extends Component {
           style={{ height: "600px", width: "600px" }}
           zoom={13}
           center={{
-            lat: -12.037354,
-            lng: -77.000488
+            lat: lat,
+            lng: lon
           }}
           markers={[
-            { lat: -12.037354, lng: -77.000488}
+            { lat: lat, lng: lon}
           ]}
         />
       </div>
     );
-  }
 }
