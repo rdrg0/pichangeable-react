@@ -7,13 +7,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import { Search } from "./component/Search";
 // import { TeamProfiles } from "./component/TeamProfiles";
 import Login from "./pages/Login";
-<<<<<<< HEAD
 import SignFlow from "./pages/SignFlow";
-=======
+import Maps from "./component/Map";
 import Signup from "./pages/SignUp";
 import { NotFound } from "./pages/NotFound";
 
->>>>>>> 7f30d0843195cc479db7f006e16da9eea2fadb0c
 
 const globalCSS = css`
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
@@ -46,6 +44,7 @@ const globalCSS = css`
 function App() {
   return (
     <>
+        <Maps />
       <Global styles={globalCSS} />
       <Router>
         <Switch>
