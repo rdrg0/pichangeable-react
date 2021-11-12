@@ -3,6 +3,8 @@ import Header from "./component/Header";
 import { Footer } from "./component/Footer";
 import Card from "./component/Card";
 import { Search } from "./component/Search";
+import React from "react";
+import NewField from "pages/NewField";
 
 
 const globalCSS = css`
@@ -38,8 +40,10 @@ function App() {
     <>
       <Global styles={globalCSS} />
       <Header />
-      <Search/>
-      <Card />
+      {/* <Search/>
+      <Card /> */}
+      <NewField />
+
       <Footer />
     </>
   );
