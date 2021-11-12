@@ -1,11 +1,15 @@
-import { Global, css } from "@emotion/react";
-import Header from "./component/Header";
-import { Footer } from "./component/Footer";
-import Card from "./component/Card";
-import { Search } from "./component/Search";
 import React from "react";
-import NewField from "pages/NewField";
+import { Global, css } from "@emotion/react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NewField from "./pages/NewField";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignFlow from "./pages/SignFlow";
+import Signup from "./pages/SignUp";
+import EditField from "./pages/EditField";
+import { NotFound } from "./pages/NotFound";
 
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 const globalCSS = css`
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
@@ -39,12 +43,17 @@ function App() {
   return (
     <>
       <Global styles={globalCSS} />
-      <Header />
-      <Search />
-      <Card />
-
-
-      <Footer />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <ProtectedRoute path="/home" component={Home} />
+          <ProtectedRoute path="/newfield" component={NewField} />
+          <ProtectedRoute path="/editfield" component={EditField} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
     </>
   );
 }
