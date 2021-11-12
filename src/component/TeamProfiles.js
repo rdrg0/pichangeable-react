@@ -4,7 +4,7 @@ import { LinkendinIcon } from "./UI/Icons";
 import { GithubIcon } from "./UI/Icons";
 import AldoCanales from "./Avatars/AldoCanales.jpeg";
 import AnaMaria from "./Avatars/AnaMariaZarate.jpeg";
-import EderRocca from "./Avatars/EderRocca.jpeg";
+import EderRocca from "./Avatars/EderRocca.png";
 import NatLinares from "./Avatars/NatLinares.jpeg";
 import RodrigoArriaran from "./Avatars/RodrigoArriaran.jpeg";
 
@@ -64,10 +64,9 @@ export const TeamProfiles = () => {
 const TeamProfilesContainer = styled.div`
   display: flex;
   flex-direction: row;
+  margin-left: 10%;
   gap: 5%;
-  padding: 5% 10% 5% 10%;
-  width: 100%;
-  background-color: var(--white);
+  width: 80%;
   `;
 
 const TeamProfile = styled.div`
