@@ -60,7 +60,7 @@ export default function LoginPage() {
             <ContainerForm>
                 <Title>Login with your Account</Title>
                 <FormData>
-                    <LabelForm>Enail</LabelForm>
+                    <LabelForm>Email</LabelForm>
                     <Input type="email" placeholder="elgatocanales@mail.com" ></Input>
                     <LabelForm>Password</LabelForm>
                     <Input type="password" placeholder="********" ></Input>
