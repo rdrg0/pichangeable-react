@@ -8,7 +8,9 @@ import SignFlow from "./pages/SignFlow";
 import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
-
+import Header from "./component/Header"
+import {Footer} from "./component/Footer"
+import DetailField from "./component/DetailField"
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 const globalCSS = css`
@@ -42,6 +44,9 @@ const globalCSS = css`
 function App() {
   return (
     <>
+      <Header />
+      <DetailField/>
+      <Footer />
       <Global styles={globalCSS} />
       <Router>
         <Switch>
