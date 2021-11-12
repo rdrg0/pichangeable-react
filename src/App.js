@@ -3,16 +3,16 @@ import Header from "./component/Header";
 import { Footer } from "./component/Footer";
 import Card from "./component/Card";
 import { Search } from "./component/Search";
-
+import Hero from "./component/Hero";
 
 const globalCSS = css`
-  @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
 
   :root {
-    --white: #FFFFFF;
-    --dark-green: #2F855A;
-    --light-green: #48BB78;
-    --green: #68D391;
+    --white: #ffffff;
+    --dark-green: #2f855a;
+    --light-green: #48bb78;
+    --green: #68d391;
     --light-gray: #f6f6f9;
     --grey: #616161;
     --dark-gray: #373737;
@@ -28,7 +28,7 @@ const globalCSS = css`
     background: var(--light-gray);
     height: 100vh;
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     font-size: 18px;
   }
 `;
@@ -38,9 +38,10 @@ function App() {
     <>
       <Global styles={globalCSS} />
       <Header />
-      <Search/>
+      <Search />
       <Card />
       <Footer />
+      <Hero />
     </>
   );
 }
