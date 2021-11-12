@@ -1,6 +1,6 @@
 
 import styled from "@emotion/styled";
-import { FontMediumGray, FontSizeBig, FontSizeMedium} from "../component/UI/Typography"
+import { FontMediumGray, FontSizeBig, FontSizeSmall,FontSizeMedium} from "../component/UI/Typography"
 import public_cancha from "../component/UI/busca_una_cancha.jpg"
 import buscador_cancha from "../component/UI/4619100.jpg"
 
