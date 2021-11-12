@@ -8,7 +8,8 @@ import SignFlow from "./pages/SignFlow";
 import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
-import ProtectedRoute from "./routes/ProtectedRoute";
+
+import ProtectedRoute from "./routes/ProtectedRoute";}
 
 const globalCSS = css`
   @import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
