@@ -40,9 +40,9 @@ function App() {
     <>
       <Global styles={globalCSS} />
       <Header />
-      {/* <Search/>
-      <Card /> */}
-      <NewField />
+      <Search />
+      <Card />
+
 
       <Footer />
     </>
