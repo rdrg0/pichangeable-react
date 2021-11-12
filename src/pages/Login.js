@@ -53,7 +53,7 @@ const Input = styled.input`
     padding: 8px;
 `
 
-export default function Signup() {
+export default function LoginPage() {
     return (
         <>
           <Login>  
