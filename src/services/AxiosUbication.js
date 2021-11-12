@@ -2,25 +2,26 @@ import axios from "axios";
 
 axios.defaults.baseURL = 'https://codeable-eatable-api.herokuapp.com/';
 
-export const AxiosLogin = (data) => {
-  return axios('/login',{
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    data: data
+export const AxiosIndexUbication = () => {
+  return axios('/ubications',{
+    method: 'GET',
   })
     .then(function (response) {
-      sessionStorage.setItem('token', JSON.stringify(response.data.token));
       return response.data
     })
     .catch(function (error) {
       console.log(error.response);
     });
-}
+};
 
-export const AxiosLogout = () => {
-  return axios('/logout',{
+export const AxiosCreateUbication = (data) => {
+  return axios('/ubications',{
     method: 'POST',
-    headers: {'Authorization': `Token token=${sessionStorage.getItem('token')}`},
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Token token=${sessionStorage.getItem('token')}`
+    },
+    data: data,
   })
     .then(function (response) {
       return response.data
@@ -28,4 +29,9 @@ export const AxiosLogout = () => {
     .catch(function (error) {
       console.log(error.response);
     });
-}
+};
+
+// data = {
+//   "district": "San Sebastian",
+//   "departament": "Cusco"
+// }
