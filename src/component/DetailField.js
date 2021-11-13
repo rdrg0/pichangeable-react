@@ -4,7 +4,22 @@ import Map from "./Map"
 import { FontMediumGray, FontSizeBig, TitleGraySmaller } from "./UI/Typography";
 import { ButtonGreen } from "./UI/Buttons";
 import { SportIcon,PersonIcon,FieldIcon } from "./UI/Icons";
+import { makeStyles } from "@material-ui/core/styles";
+import { Modal } from "@material-ui/core";
+import { useState } from "react";
 
+const useStyles = makeStyles((theme)=>({
+    modal:{
+        position: "absolute",
+        width:400,
+        backgroundColor: "white",
+        border:'2px solid #000',
+        top:"50%",
+        left: "50%"
+    }
+    }
+    )
+)
 const DetailContainer = styled.div`
     display:flex;
     background: white;
@@ -21,6 +36,7 @@ const Details = styled.div`
     width:50%;
     margin:0; 
     padding:20px;
+    position: relative;
     img{
         width:80%;
         height:65%;  
@@ -69,7 +85,22 @@ const DivBorder = styled.div`
     }
 `
 
+
+
 export default function DetailField(){
+  const styles=useStyles();
+  const [modal, setModal] = useState(false);
+  const openModal = () =>{
+      setModal(!modal);
+  }
+  const body = (
+      <div className={styles.modal}>
+          Hola que jace
+          dasdas
+          dasd
+          dasda
+      </div>
+  )
   return (
       <DetailContainer>
         <Details style={{borderRight: "3px solid var(--light-gray)"}}>
@@ -105,7 +136,12 @@ export default function DetailField(){
             />
             <FontSizeBig style={{color:"var(--dark-green)"}}>Make a Booking</FontSizeBig>
             <FontMediumGray>To reserve this venue, click the button below to reach out directly.</FontMediumGray>
-            <ButtonGreen>Book Facility</ButtonGreen>
+            <ButtonGreen className={styles.button} onClick={openModal}>Book Facility</ButtonGreen>
+            <Modal  className={styles.modal}
+                open={modal}
+                onClose={openModal}>
+                  {body}
+                </Modal>
         </Details>
       </DetailContainer>
     );
