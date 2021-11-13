@@ -39,6 +39,7 @@ const globalCSS = css`
     font-family: 'Inter', sans-serif;
     font-size: 18px;
   }
+  
 `;
 
 function App() {

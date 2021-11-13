@@ -24,6 +24,7 @@ export const ButtonGreen = styled.button`
   }
 
   :hover{
+    cursor: pointer;
     background-color: var(--dark-green);
     border:none;
     svg{
@@ -59,6 +60,7 @@ export const ButtonWhite = styled.button`
     }
   }
   :hover{
+    cursor: pointer;
     background-color: var(--light-green);
     color: white;
     svg{

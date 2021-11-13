@@ -1,60 +1,103 @@
 import styled from "@emotion/styled";
 import cancha from "./UI/cancha8.jpg"
+import Map from "./Map"
+import { FontMediumGray, FontSizeBig, TitleGray,TitleGraySmaller } from "./UI/Typography";
+import { ButtonGreen } from "./UI/Buttons";
+
 const DetailContainer = styled.div`
     display:flex;
-    height: 704px;
     background: white;
     flex-direction:row;
-    padding-top: 64px;
-    gap: 44px;
-    padding:16px;
-    margin:16px;
+    padding-top: 10px;
+    gap: 60px;
+    padding:20px;
+    margin:8px;
 `
-
-const Aside = styled.aside`
-    display:flex;
-    height: 704px;
-    width: 20%;
-    background: var(--light-green);
-`
-
 const Details = styled.div`
     display:flex;
-    height: 704px;
-    width: 80%;
-    background: var(--light-green);
     flex-direction:column;
-    align-items:center;
-    padding:16px;
-    gap: 16px;
+    gap: 10px;
+    width:50%;
+    margin:0; 
+    padding:0;
     img{
-        width:20%;
-        height:40%;  
+        width:80%;
+        height:65%;  
+        margin:0 auto;
+        border-radius: 16px;
+        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
     }
+    button{
+        align-self: center;
+    }
+`
+
+
+const ContainerImportant=styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    
+`
+
+const ContainerVertical=styled.section`
+    display:flex;
+    flex-direction:column;
+    margin:0px 25px;
+    gap:10px;
+   
+`
+
+const DivBorder = styled.aside`
+    display:flex;
+    flex-direction:row;
+    gap:40px;
+    justify-content: space-between;
+    padding-top:15px;
+    border-top: 3px solid var(--dark-green);
+    padding-bottom:15px;
+    border-bottom: 3px solid var(--dark-green);
+    margin:0px 25px;
 `
 
 export default function DetailField(){
   return (
       <DetailContainer>
-        <Details>
+        <Details style={{borderRight: "3px solid var(--light-gray)"}}>
+            <ContainerVertical>
+                <ContainerImportant>
+                    <TitleGraySmaller>Tu Pelotita</TitleGraySmaller>
+                    <TitleGraySmaller>$15</TitleGraySmaller>
+                </ContainerImportant>
+                <ContainerImportant>
+                    <FontMediumGray>Jr. Ceramicas 234</FontMediumGray>
+                    <FontMediumGray>El Agustino</FontMediumGray>
+                </ContainerImportant>
+            </ContainerVertical>
+            <DivBorder>
+                    <TitleGraySmaller>Soccer</TitleGraySmaller>
+                    <TitleGraySmaller>Grass</TitleGraySmaller>
+                    <TitleGraySmaller>11-11</TitleGraySmaller>
+            </DivBorder>
             <img src={cancha} alt="image_de_cancha"/>
-            <div>
-                <div>
-                    <label>Tu Pelotita</label>
-                    <label>$15</label>
-                </div>
-                <div>
-                    <label>Esta es la dirección</label>
-                    <label>Este es el Distrito</label>
-                </div>
-            </div>
-            <div></div>
-            <label>Acerca de la cancha...</label>
-            <label>Esta es una descripció de la cancha que jugan varias personas</label>
-
-
+            <ContainerVertical>
+                <FontSizeBig style={{color:"var(--dark-green)"}}>Acerca de la cancha...</FontSizeBig>
+            <FontMediumGray>
+            Unfortunately this sport and recreation facility currently does offer instant online booking via pitchbooking.com To speak with a member of staff at Whitechapel Sports Centre about the rental of their facilities, you will need to reach out directly via the contact details we have listed for Whitechapel Sports Centre, 55 Durward Street, London, E1 5BA.
+            </FontMediumGray>
+            </ContainerVertical>
         </Details>
-        <Aside>Hola</Aside>
+        
+        <Details>
+            <FontSizeBig style={{color:"var(--dark-green)"}}>Location</FontSizeBig>
+            <Map 
+                x={Math.random(15)*-1.0120}
+                y={Math.random(99)*-1.12}
+            />
+            <FontSizeBig style={{color:"var(--dark-green)"}}>Make a Booking</FontSizeBig>
+            <FontMediumGray>To reserve this venue, click the button below to reach out directly.</FontMediumGray>
+            <ButtonGreen>Book Facility</ButtonGreen>
+        </Details>
       </DetailContainer>
     );
   }

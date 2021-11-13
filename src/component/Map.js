@@ -3,10 +3,10 @@ export default function Maps ({x,y}) {
     let lat= parseFloat(x);
     let lon= parseFloat(y);
     return (
-      <div className="container">
+      <div className="container" style={{}}>
         <GoogleMaps
           apiKey={"AIzaSyAFwZ5uFjydXpyGNETituX1nalAd5I6Rrs"}
-          style={{ height: "600px", width: "600px" }}
+          style={{ height: "450px", width: "450px",borderRadius: "16px" }}
           zoom={13}
           center={{
             lat: lat,
