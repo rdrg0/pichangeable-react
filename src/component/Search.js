@@ -1,3 +1,4 @@
+import React from "react";
 import { FontSizeSmall } from "./UI/Typography";
 import styled from "@emotion/styled";
 import { ButtonGreen } from "./UI/Buttons";
@@ -6,33 +7,45 @@ export const Search = () => {
   return (
     <SearchContainer>
       <SearchDiv>
-        <FontSizeSmall style={{letterSpacing: '1.5px', textAlign: 'left'}}>I’M LOOKING FOR</FontSizeSmall>
+        <FontSizeSmall style={{ letterSpacing: "1.5px", textAlign: "left" }}>
+          I’M LOOKING FOR
+        </FontSizeSmall>
         <InputSelect>
           <option value="value1">Value 1</option>
-          <option value="value2" selected>Footbal field</option>
+          <option value="value2" selected>
+            Footbal field
+          </option>
           <option value="value3">Value 3</option>
         </InputSelect>
       </SearchDiv>
       <SearchDiv>
-        <FontSizeSmall style={{letterSpacing: '1.5px', textAlign: 'left'}}>I WANT TO</FontSizeSmall>
+        <FontSizeSmall style={{ letterSpacing: "1.5px", textAlign: "left" }}>
+          I WANT TO
+        </FontSizeSmall>
         <InputSelect>
           <option value="value1">Value 1</option>
-          <option value="value2" selected>Footbal field</option>
+          <option value="value2" selected>
+            Footbal field
+          </option>
           <option value="value3">Value 3</option>
         </InputSelect>
       </SearchDiv>
       <SearchDiv>
-        <FontSizeSmall style={{letterSpacing: '1.5px', textAlign: 'left'}}>WHERE</FontSizeSmall>
+        <FontSizeSmall style={{ letterSpacing: "1.5px", textAlign: "left" }}>
+          WHERE
+        </FontSizeSmall>
         <InputSelect>
           <option value="value1">Value 1</option>
-          <option value="value2" selected>Footbal field</option>
+          <option value="value2" selected>
+            Footbal field
+          </option>
           <option value="value3">Value 3</option>
         </InputSelect>
       </SearchDiv>
-      <ButtonGreen style={{fontSize:'14px'}}>SEARCH</ButtonGreen>
+      <ButtonGreen style={{ fontSize: "14px" }}>SEARCH</ButtonGreen>
     </SearchContainer>
-  )
-}
+  );
+};
 
 const SearchContainer = styled.div`
   display: flex;
@@ -52,7 +65,7 @@ const SearchDiv = styled.div`
   display: flex;
   flex-direction: column;
   padding-right: 20px;
-  border-right: solid 1px #E1E2E1; 
+  border-right: solid 1px #e1e2e1;
 `;
 
 const InputSelect = styled.select`

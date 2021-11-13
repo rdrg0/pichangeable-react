@@ -4,10 +4,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewField from "./pages/NewField";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import SignFlow from "./pages/SignFlow";
 import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
 import { SessionProvider } from "./context/SessionContext";
+import { Hero } from "./component/Hero";
+
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 const globalCSS = css`
@@ -45,7 +48,7 @@ function App() {
       <SessionProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Hero} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <ProtectedRoute path="/home" component={Home} />
