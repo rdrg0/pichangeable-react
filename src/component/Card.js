@@ -3,23 +3,23 @@ import styled from "@emotion/styled";
 /** @jsxImportSource @emotion/react */
 import cancha from "./UI/cancha8.jpg";
 import { FontSizeBig, FontSizeMedium } from "./UI/Typography";
+import { FieldIcon, SportIcon,LocationIcon } from "./UI/Icons";
 
 const Card = styled.li`
   padding: unset;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
-  height: 360px;
+  width: 27%;
   background: #ffffff;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   margin: 0px;
-  gap: 8px;
+  gap: 10px;
   border-bottom: 12px solid var(--dark-green);
   .image {
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     img {
       width: 100%;
       height: 100%;
@@ -30,11 +30,15 @@ const Card = styled.li`
   .information {
     display: flex;
     flex-direction: row;
-    padding: 4px;
     text-align: center;
     width: 100%;
     justify-content: space-around;
+    h2 {
+      color: var(--dark-green);
+      align-self: center;
+    }
     h4 {
+      color: var(--dark-green);
       align-self: center;
     }
   }
@@ -44,8 +48,10 @@ const Card = styled.li`
   .icons {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    gap: 35px;
+    gap: 0.6em;
+    label{
+      color: var(--dark-gray);
+    }
   }
 `;
 
@@ -61,12 +67,21 @@ export default function ListItem() {
           <FontSizeMedium>Tu Pelotita</FontSizeMedium>
         </div>
         <div className="address">
-          <label>Apt. 325 29166 Wuckert Heights, Adamland, MT 17471</label>
+          <label style={{fontSize: 15, color: "var(--dark-gray)"}}>Apt. 325 29166 Wuckert Heights, Adamland, MT 17471</label>
         </div>
         <div className="icons">
-          <label>Grass</label>
-          <label>Futbol</label>
-          <label>S.J.M.</label>
+          <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+            <FieldIcon/>
+            <label  style={{fontSize: 16, color: "var(--dark-gray)"}}>Grass</label>
+          </div>
+          <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+            <SportIcon/>
+            <label  style={{fontSize: 16, color: "var(--dark-gray)"}}>Futbol</label>
+          </div>
+          <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+            <LocationIcon/> 
+            <label  style={{fontSize: 16, color: "var(--dark-gray)"}}>S.J.M.</label>
+          </div>
         </div>
       </Card>
     </>
