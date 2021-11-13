@@ -5,7 +5,7 @@ import { LinkendinIcon } from "./UI/Icons";
 import { GithubIcon } from "./UI/Icons";
 import AldoCanales from "./Avatars/AldoCanales.jpeg";
 import AnaMaria from "./Avatars/AnaMariaZarate.jpeg";
-import EderRocca from "./Avatars/EderRocca.png";
+import EderRocca from "./Avatars/EderRocca.jpeg";
 import NatLinares from "./Avatars/NatLinares.jpeg";
 import RodrigoArriaran from "./Avatars/RodrigoArriaran.jpeg";
 
