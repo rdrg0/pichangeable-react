@@ -64,25 +64,25 @@ export default function SignFlow() {
     <>
       <Sign>
         <Titles>
-          <FontMediumGray style={{ fontSize: 24 }}>
+          <FontMediumGray style={{ fontSize: 24, textAlign:"center" }}>
             Selecciona el perfil con el que te identificas
           </FontMediumGray>
-          <FontSizeBig style={{ fontSize: 44 }}>
+          <FontSizeBig style={{ fontSize: 44, textAlign:"center" }}>
             ¿Qué estás buscando?
           </FontSizeBig>
         </Titles>
         <Options>
           <Card>
             <img src={public_cancha} alt="buscador_cancha" />
-            <FontSizeMedium>Administrador</FontSizeMedium>
+            <FontSizeMedium style={{ fontWeight: 600 }}>Administrador</FontSizeMedium>
             <FontMediumGray>
               Tienes algún espacio deportivo que ofrecer
             </FontMediumGray>
           </Card>
           <Card>
             <img src={buscador_cancha} alt="buscador_cancha" />
-            <FontSizeMedium>Pichanguero</FontSizeMedium>
-            <FontMediumGray>Necesitas un campo deportivo</FontMediumGray>
+            <FontSizeMedium style={{ fontWeight: 600 }}>Pichanguero</FontSizeMedium>
+            <FontMediumGray style={{ textAlign:"center" }}>Necesitas un campo deportivo</FontMediumGray>
           </Card>
         </Options>
       </Sign>
