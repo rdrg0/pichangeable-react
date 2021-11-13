@@ -19,31 +19,32 @@ const HeaderContainer = styled.div`
     flex-direction: row;
     gap: 30px;
     align-items: center;
-  }
-  .logo {
-    margin: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    img {
-      height: 70px;
-      width: 70px;
-      margin: initial;
+    background-color: white;
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+    }
+    .logo{
+        margin:20px;
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        img{
+            height:70px;
+            width:70px;
+            margin: initial;
+        }
     }
   }
 `;
 const ContainerSearch = styled.div`
-  width: 300px;
-  vertical-align: middle;
-  position: relative;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  input {
-    font: Inter;
-    size: 14px;
-    line-height: 24px;
-    letter-spacing: 1.25px;
+    width: 250px;
+    vertical-align: middle;
+    position: relative;
+    display: flex;
+    gap: 12px;
     align-items: center;
     color: var(--gray);
     width: 249px;
@@ -61,30 +62,23 @@ const ContainerSearch = styled.div`
   }
 `;
 
-export default function Header() {
-  return (
-    <HeaderContainer>
-      <div className="logo">
-        <img src={logo} alt="logo de pichangueable" />
-        <TitleGray>Pichangue</TitleGray>
-        <TitleGreen>able</TitleGreen>
-      </div>
-      <div className="buttons">
-        <ContainerSearch>
-          <label htmlFor="search">
-            <LupitaIcon />
-          </label>
-          <input type="search" id="search" placeholder="Find your field ... " />
-        </ContainerSearch>
-        <ButtonWhite>
-          <JoinIcon />
-          Join
-        </ButtonWhite>
-        <ButtonGreen>
-          <LoginIcon />
-          Login
-        </ButtonGreen>
-      </div>
-    </HeaderContainer>
-  );
+export default function Header(){
+    return(        
+        <HeaderContainer style={{justifyContent: "space-between"}}>
+            <div className="logo">
+                    <img src={logo} alt="logo de pichangueable"/>
+                    <TitleGray>Pichangue</TitleGray>
+                    <TitleGreen>able</TitleGreen>
+            </div>
+            <div className="buttons">
+                <ContainerSearch>
+                    <label htmlFor="search"><LupitaIcon /></label>
+                    <input type="search" id="search" placeholder="Find your field ... "/>
+                </ContainerSearch>
+                <ButtonWhite><JoinIcon/>Join</ButtonWhite>
+                <ButtonGreen><LoginIcon/>Login</ButtonGreen>
+            </div>
+        </HeaderContainer>
+        
+    )
 }
