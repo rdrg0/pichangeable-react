@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import cancha from "./UI/cancha8.jpg"
 import Map from "./Map"
-import { FontMediumGray, FontSizeBig, TitleGray,TitleGraySmaller } from "./UI/Typography";
+import { FontMediumGray, FontSizeBig, TitleGraySmaller } from "./UI/Typography";
 import { ButtonGreen } from "./UI/Buttons";
+import { SportIcon,PersonIcon,FieldIcon } from "./UI/Icons";
 
 const DetailContainer = styled.div`
     display:flex;
@@ -16,10 +17,10 @@ const DetailContainer = styled.div`
 const Details = styled.div`
     display:flex;
     flex-direction:column;
-    gap: 10px;
+    gap: 15px;
     width:50%;
     margin:0; 
-    padding:0;
+    padding:20px;
     img{
         width:80%;
         height:65%;  
@@ -30,6 +31,7 @@ const Details = styled.div`
     button{
         align-self: center;
     }
+    margin-left:10px;
 `
 
 
@@ -48,7 +50,7 @@ const ContainerVertical=styled.section`
    
 `
 
-const DivBorder = styled.aside`
+const DivBorder = styled.div`
     display:flex;
     flex-direction:row;
     gap:40px;
@@ -58,6 +60,12 @@ const DivBorder = styled.aside`
     padding-bottom:15px;
     border-bottom: 3px solid var(--dark-green);
     margin:0px 25px;
+    div{
+        display:flex;
+        flex-direction:row;
+        gap:5px;
+        align-items: center;
+    }
 `
 
 export default function DetailField(){
@@ -75,9 +83,9 @@ export default function DetailField(){
                 </ContainerImportant>
             </ContainerVertical>
             <DivBorder>
-                    <TitleGraySmaller>Soccer</TitleGraySmaller>
-                    <TitleGraySmaller>Grass</TitleGraySmaller>
-                    <TitleGraySmaller>11-11</TitleGraySmaller>
+                    <div><SportIcon/><TitleGraySmaller>Soccer</TitleGraySmaller></div>
+                    <div><FieldIcon/><TitleGraySmaller>Grass</TitleGraySmaller></div>
+                    <div><PersonIcon/><TitleGraySmaller>11-11</TitleGraySmaller></div>
             </DivBorder>
             <img src={cancha} alt="image_de_cancha"/>
             <ContainerVertical>

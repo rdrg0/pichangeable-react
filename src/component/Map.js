@@ -6,7 +6,7 @@ export default function Maps ({x,y}) {
       <div className="container" style={{}}>
         <GoogleMaps
           apiKey={"AIzaSyAFwZ5uFjydXpyGNETituX1nalAd5I6Rrs"}
-          style={{ height: "450px", width: "450px",borderRadius: "16px" }}
+          style={{ height: "450px", width: "450px",borderRadius: "16px" , margin: "0 auto" }}
           zoom={13}
           center={{
             lat: lat,
