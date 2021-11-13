@@ -27,6 +27,7 @@ const Details = styled.div`
         margin:0 auto;
         border-radius: 16px;
         box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+        margin-top: 8px;
     }
     button{
         align-self: center;
