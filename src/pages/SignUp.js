@@ -5,6 +5,9 @@ import { ButtonGreen } from "../component/UI/Buttons";
 
 const PageSignUp = styled.div`
   display: flex;
+  flex-direction: column;
+  padding-top:4%;
+  gap: 5%;
   height: 704px;
   background: rgb(0, 0, 0);
   background: linear-gradient(
@@ -59,15 +62,17 @@ const Input = styled.input`
 `;
 
 export default function Signup() {
+  const role= sessionStorage.getItem('role');
   return (
     <>
       <PageSignUp>
+      <Title style={{fontSize:36, color: 'var(--dark-gray)'}}>{role==="1"? "Welcome Admin!": "Welcome Pichanguero!"}</Title>
         <ContainerForm>
-          <Title>Create your Account</Title>
+          <Title  style={{color: 'var(--dark-gray)'}}>Create your Account</Title>
           <FormData>
             <LabelForm>Name</LabelForm>
             <Input type="text" placeholder="Aldito Cuba"></Input>
-            <LabelForm>Enail</LabelForm>
+            <LabelForm>Email</LabelForm>
             <Input type="email" placeholder="elgatocanales@mail.com"></Input>
             <LabelForm>Phone</LabelForm>
             <Input type="phone" placeholder="951236547"></Input>

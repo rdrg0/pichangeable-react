@@ -7,12 +7,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
-import Header from "./component/Header";
-import { Footer } from "./component/Footer";
-import DetailField from "./component/DetailField";
 import { SessionProvider } from "./context/SessionContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import { Calendar } from "component/Calendar";
 import SignFlow from "pages/SignFlow";
 
 const globalCSS = css`
