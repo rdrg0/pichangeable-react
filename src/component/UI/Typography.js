@@ -1,7 +1,8 @@
+import React from "react";
 import styled from "@emotion/styled";
 
 export const FontTitle = styled.h1`
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--dark-gray);
   font-size: 64px;
   line-height: 88px;
@@ -10,7 +11,7 @@ export const FontTitle = styled.h1`
 `;
 
 export const FontSizeBig = styled.h2`
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--dark-gray);
   font-size: 36px;
   line-height: 48px;
@@ -18,7 +19,7 @@ export const FontSizeBig = styled.h2`
 `;
 
 export const FontSizeMedium = styled.h4`
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--dark-gray);
   font-size: 24px;
   line-height: 32px;
@@ -27,7 +28,7 @@ export const FontSizeMedium = styled.h4`
 `;
 
 export const FontMediumGreen = styled.h5`
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--light-green);
   font-size: 20px;
   line-height: 28px;
@@ -36,7 +37,7 @@ export const FontMediumGreen = styled.h5`
 `;
 
 export const FontMediumGray = styled.h5`
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: var(--dark-gray);
   font-size: 20px;
   line-height: 28px;
@@ -44,9 +45,9 @@ export const FontMediumGray = styled.h5`
 `;
 
 export const FontHeaderLabel = styled.h6`
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--grey);
-  display:flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: 4px;
@@ -57,7 +58,7 @@ export const FontHeaderLabel = styled.h6`
 `;
 
 export const FontSizeSmall = styled.label`
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--grey);
   font-weight: 400;
   font-size: 10px;
@@ -65,13 +66,12 @@ export const FontSizeSmall = styled.label`
   text-align: center;
 `;
 
-
 export const TitleGray = styled.h2`
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--dark-gray);
   font-size: 36px;
   line-height: 48px;
-  font-style:bold;
+  font-style: bold;
   text-align: center;
 `;
 
@@ -84,17 +84,16 @@ export const TitleGraySmaller = styled.h2`
 `;
 
 export const TitleGreen = styled.h2`
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--dark-green);
   font-size: 36px;
   line-height: 48px;
-  font-style:bold;
+  font-style: bold;
   text-align: center;
 `;
 
-
 export const LabelForm = styled.label`
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--dark-gray);
   font-size: 10px;
   line-height: 12px;

@@ -1,3 +1,4 @@
+import React from "react";
 import GoogleMaps from "simple-react-google-maps";
 export default function Maps ({x,y}) {
     let lat= parseFloat(x);
