@@ -7,9 +7,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
-import Header from "./component/Header"
-import {Footer} from "./component/Footer"
-import DetailField from "./component/DetailField"
+import Header from "./component/Header";
+import { Footer } from "./component/Footer";
+import DetailField from "./component/DetailField";
 import { SessionProvider } from "./context/SessionContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { Calendar } from "component/Calendar";
@@ -40,14 +40,13 @@ const globalCSS = css`
     font-family: "Inter", sans-serif;
     font-size: 18px;
   }
-  
 `;
 
 function App() {
   return (
     <>
       <Header />
-      <DetailField/>
+      <DetailField />
       <Footer />
       <Global styles={globalCSS} />
       <SessionProvider>
