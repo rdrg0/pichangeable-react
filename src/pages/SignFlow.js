@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import styled from "@emotion/styled";
 import {
@@ -8,6 +9,13 @@ import {
 } from "../component/UI/Typography";
 import public_cancha from "../component/UI/busca_una_cancha.jpg";
 import buscador_cancha from "../component/UI/4619100.jpg";
+=======
+import styled from "@emotion/styled";
+import React from "react";
+import { FontMediumGray, FontSizeBig, FontSizeMedium} from "../component/UI/Typography"
+import public_cancha from "../component/UI/busca_una_cancha.jpg"
+import buscador_cancha from "../component/UI/4619100.jpg"
+>>>>>>> da485fe9c28e6911554eb7d0530bca37ff318031
 
 const Sign = styled.div`
   display: flex;

@@ -51,7 +51,7 @@ function App() {
             <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <ProtectedRoute path="/home" component={Home} />
+            <Route path="/home" component={Home} />
             <ProtectedRoute path="/newfield" component={NewField} />
             <ProtectedRoute path="/editfield" component={EditField} />
             <Route component={NotFound} />
