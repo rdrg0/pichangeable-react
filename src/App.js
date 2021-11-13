@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewField from "./pages/NewField";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import SignFlow from "./pages/SignFlow";
 import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
@@ -12,9 +11,8 @@ import Header from "./component/Header"
 import {Footer} from "./component/Footer"
 import DetailField from "./component/DetailField"
 import { SessionProvider } from "./context/SessionContext";
-import { Hero } from "./component/Hero";
-
 import ProtectedRoute from "./routes/ProtectedRoute";
+import { Calendar } from "component/Calendar";
 
 const globalCSS = css`
   @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
@@ -55,7 +53,7 @@ function App() {
       <SessionProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Calendar} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/home" component={Home} />

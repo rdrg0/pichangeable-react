@@ -52,8 +52,8 @@ const SearchContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  margin-top: 20px;
   padding: 8px 16px;
-  position: absolute;
   width: 800px;
   height: 72px;
   background: var(--white);
