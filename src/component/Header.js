@@ -16,7 +16,7 @@ const HeaderContainer = styled.div`
     .buttons{
         display: flex;
         flex-direction: row;
-        gap: 30px;
+        gap: 20px;
         align-items: center;
     }
     .logo{
@@ -32,7 +32,7 @@ const HeaderContainer = styled.div`
     }
 `
 const ContainerSearch = styled.div`
-    width: 300px;
+    width: 250px;
     vertical-align: middle;
     position: relative;
     display: flex;
@@ -64,7 +64,7 @@ const ContainerSearch = styled.div`
 
 export default function Header(){
     return(        
-        <HeaderContainer>
+        <HeaderContainer style={{justifyContent: "space-between"}}>
             <div className="logo">
                     <img src={logo} alt="logo de pichangueable"/>
                     <TitleGray>Pichangue</TitleGray>
