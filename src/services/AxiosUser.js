@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://codeable-eatable-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://pichangeableapi.herokuapp.com';
 
 export const AxiosShowUser = () => {
   return axios('/users',{

@@ -14,7 +14,7 @@ export const TeamProfiles = () => {
     <TeamProfilesContainer>
       <TeamProfile>
         <TeamProfileImage src={AnaMaria} alt="Ana Maria" />
-        <FontSizeMedium>Ana Maria Zárate</FontSizeMedium>
+        <FontSizeMedium style={{fontSize:'20px'}}>Ana Zárate</FontSizeMedium>
         <Icons>
           <LinkendinIcon />
           <GithubIcon />
@@ -23,7 +23,7 @@ export const TeamProfiles = () => {
 
       <TeamProfile>
         <TeamProfileImage src={AldoCanales} alt="Aldo Canales" />
-        <FontSizeMedium>Aldo Canales</FontSizeMedium>
+        <FontSizeMedium style={{fontSize:'20px'}}>Aldo Canales</FontSizeMedium>
         <Icons>
           <LinkendinIcon />
           <GithubIcon />
@@ -32,7 +32,7 @@ export const TeamProfiles = () => {
 
       <TeamProfile>
         <TeamProfileImage src={EderRocca} alt="Eder Rocca" />
-        <FontSizeMedium>Eder Rocca</FontSizeMedium>
+        <FontSizeMedium style={{fontSize:'20px'}}>Eder Rocca</FontSizeMedium>
         <Icons>
           <LinkendinIcon />
           <GithubIcon />
@@ -41,7 +41,7 @@ export const TeamProfiles = () => {
 
       <TeamProfile>
         <TeamProfileImage src={NatLinares} alt="Nat Linares" />
-        <FontSizeMedium>Nathaly Linares</FontSizeMedium>
+        <FontSizeMedium style={{fontSize:'20px'}}>Nathaly Linares</FontSizeMedium>
         <Icons>
           <LinkendinIcon />
           <GithubIcon />
@@ -50,7 +50,7 @@ export const TeamProfiles = () => {
 
       <TeamProfile>
         <TeamProfileImage src={RodrigoArriaran} alt="Rodrigo Arriaran" />
-        <FontSizeMedium>Rodrigo Arriarán</FontSizeMedium>
+        <FontSizeMedium>Rodri Arriarán</FontSizeMedium>
         <Icons>
           <LinkendinIcon />
           <GithubIcon />
@@ -63,9 +63,10 @@ export const TeamProfiles = () => {
 const TeamProfilesContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 10%;
   gap: 5%;
-  width: 80%;
+  width: 100%;
+  background-color: var(--white);
+  padding: 5%;
 `;
 
 const TeamProfile = styled.div`

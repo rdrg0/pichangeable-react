@@ -55,7 +55,7 @@ const ContainerCalendar = styled.div`
 `;
 
 export const Calendar = () => {
-  const [value, setValue] = React.useState("2021-08-20");
+  const [value, setValue] = React.useState("2021-11-13");
 
   return (
     <>

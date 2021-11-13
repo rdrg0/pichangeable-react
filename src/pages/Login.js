@@ -5,6 +5,7 @@ import { ButtonGreen } from "../component/UI/Buttons";
 import { useContext } from "react";
 import { SessionContext } from "../context/SessionContext";
 import { AxiosLogin } from "../services/AxiosSession";
+import { useHistory } from "react-router-dom";
 
 const Login = styled.div`
   display: flex;
@@ -62,6 +63,7 @@ const Input = styled.input`
 
 export default function LoginPage() {
   const ctx = useContext(SessionContext);
+  const history = useHistory();
 
   async function loginUser(e) {
     e.preventDefault();
@@ -69,6 +71,7 @@ export default function LoginPage() {
     console.log(email, password);
     const datauser = await AxiosLogin({ email, password });
     await ctx.signIn(datauser.token, datauser.name, datauser.role);
+    history.push("/home");
   }
 
   return (

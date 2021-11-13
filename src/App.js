@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NewField from "./pages/NewField";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import SignFlow from "./pages/SignFlow";
 import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
@@ -12,8 +11,6 @@ import Header from "./component/Header"
 import {Footer} from "./component/Footer"
 import DetailField from "./component/DetailField"
 import { SessionProvider } from "./context/SessionContext";
-import { Hero } from "./component/Hero";
-
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { Calendar } from "component/Calendar";
 
