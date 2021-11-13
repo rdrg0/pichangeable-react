@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import styled from "@emotion/styled";
 import { LabelForm } from "../component/UI/Typography";

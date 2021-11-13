@@ -11,6 +11,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import TextField from "@mui/material/TextField";
 import DatePicker from "@mui/lab/DatePicker";
+import { GetDate } from "../utils/GetDate";
 
 const schedulerData = [
   {
@@ -55,7 +56,8 @@ const ContainerCalendar = styled.div`
 `;
 
 export const Calendar = () => {
-  const [value, setValue] = React.useState("2021-11-13");
+  const [value, setValue] = React.useState(GetDate());
+  console.log(GetDate());
 
   return (
     <>
