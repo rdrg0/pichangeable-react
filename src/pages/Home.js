@@ -9,35 +9,47 @@ import ListItem from "../component/Card";
 import { NavLink } from "react-router-dom";
 import { Hero } from "../component/Hero";
 import { AxiosIndexField } from "services/AxiosField";
+import cancha from "../component/UI/cancha8.jpg";
 
 export default function Home() {
   const [fields, setFields] = React.useState([]);
+  const [bestFields, setBestFields] = React.useState([]);
 
   React.useEffect(() => {
     async function fetchData() {
       const result = await AxiosIndexField();
       setFields(result);
+      setBestFields(result.slice(0, 3));
     }
     fetchData();
-  });
-
-
-
+  }, []);
+  console.log(fields);
   
 
   return (
     <>
     <Container>
       <Header />
+      {sessionStorage.getItem("token") ? 
+      (
+      <>
       <Hero/>
       <BestFieldsContainer>
         <FontSizeBig style={{ color: "var(--light-green)" }}>
           ¡NUESTRAS CANCHAS MAS SOLICITADAS!
         </FontSizeBig>
         <LisContainer>
-          <ListItem />
-          <ListItem />
-          <ListItem />
+        {bestFields.map((field) => (
+          <ListItem
+            image={cancha}
+            price={field.price_hour}
+            name={field.name}
+            address={field.address}
+            field_type={field.field_type}
+            sport_type={field.sport_type}
+            location={field.ubication_id}
+          />
+        ))}
         </LisContainer>
       </BestFieldsContainer>
       <Slogan>
@@ -51,6 +63,22 @@ export default function Home() {
         </NavLink>
       </Slogan>
       <TeamProfiles />
+      </>
+      ) : (
+        <FieldsContainer>
+        {fields.map(field => (
+          <ListItem
+          image={cancha}
+          price={field.price_hour}
+          name={field.name}
+          address={field.address}
+          field_type={field.field_type}
+          sport_type={field.sport_type}
+          location={field.ubication_id}
+          />
+        ))}
+        </FieldsContainer>
+      )}
       <Footer />
     </Container>
     </>
@@ -83,7 +111,7 @@ const BestFieldsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5% 0% 5% 0%;
+  padding: 5%;
   margin-bottom: 0%;
   width: 100%;
 `;
@@ -96,4 +124,15 @@ const LisContainer = styled.div`
   padding: 5% 0% 5% 0%;
   margin-bottom: 0%;
   width: 75%;
+`;
+
+const FieldsContainer = styled.div`
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 5% 0% 5% 0%;
+  margin-bottom: 0%;
+  width: 100%;
 `;
