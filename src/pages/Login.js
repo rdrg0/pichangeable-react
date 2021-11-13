@@ -1,8 +1,10 @@
+import React from "react";
 import styled from "@emotion/styled";
 import { LabelForm } from "../component/UI/Typography";
 import { ButtonGreen } from "../component/UI/Buttons";
 import { useContext } from "react";
 import { SessionContext } from "../context/SessionContext";
+import { AxiosLogin } from "../services/AxiosSession";
 
 const Login = styled.div`
   display: flex;
@@ -61,16 +63,35 @@ const Input = styled.input`
 export default function LoginPage() {
   const ctx = useContext(SessionContext);
 
+  async function loginUser(e) {
+    e.preventDefault();
+    const { email, password } = ctx.session;
+    console.log(email, password);
+    await AxiosLogin({ email, password });
+  }
+
   return (
     <>
       <Login>
         <ContainerForm>
           <Title>Login with your Account</Title>
-          <FormData>
+          <FormData onSubmit={loginUser}>
             <LabelForm>Email</LabelForm>
-            <Input type="email" placeholder="elgatocanales@mail.com"></Input>
+            <Input
+              type="email"
+              placeholder="elgatocanales@mail.com"
+              name="email"
+              value={ctx.session.email}
+              onChange={ctx.handleChangeLogin}
+            ></Input>
             <LabelForm>Password</LabelForm>
-            <Input type="password" placeholder="********"></Input>
+            <Input
+              type="password"
+              placeholder="********"
+              name="password"
+              value={ctx.session.password}
+              onChange={ctx.handleChangeLogin}
+            ></Input>
             <ButtonGreen>Sign In</ButtonGreen>
           </FormData>
         </ContainerForm>

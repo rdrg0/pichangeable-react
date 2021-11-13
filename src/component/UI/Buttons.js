@@ -1,9 +1,10 @@
+import React from "react";
 import styled from "@emotion/styled";
 
 export const ButtonGreen = styled.button`
   padding: 8px 16px;
   height: 40px;
-  color:white;
+  color: white;
   display: flex;
   background: var(--light-green);
   border-radius: 8px;
@@ -15,26 +16,24 @@ export const ButtonGreen = styled.button`
   letter-spacing: 1.25px;
   text-transform: uppercase;
   cursor: pointer;
-  svg{
+  svg {
     margin: auto;
     margin-right: 10px;
-    path{
-        fill: white;
+    path {
+      fill: white;
     }
   }
 
-  :hover{
+  :hover {
     background-color: var(--dark-green);
-    border:none;
-    svg{
-        path{
-            fill: white;
-            }
+    border: none;
+    svg {
+      path {
+        fill: white;
+      }
     }
   }
-  
-`
-
+`;
 
 export const ButtonWhite = styled.button`
   padding: 8px 16px;
@@ -42,7 +41,7 @@ export const ButtonWhite = styled.button`
   color: var(--dark-green);
   background: white;
   border-radius: 8px;
-  border: 1px solid  var(--dark-green);
+  border: 1px solid var(--dark-green);
   font-family: Inter;
   display: flex;
   font-size: 18px;
@@ -51,20 +50,20 @@ export const ButtonWhite = styled.button`
   letter-spacing: 1.25px;
   text-transform: uppercase;
   cursor: pointer;
-  svg{
+  svg {
     margin: auto;
     margin-right: 10px;
-    path{
-        fill: var(--dark-green);
+    path {
+      fill: var(--dark-green);
     }
   }
-  :hover{
+  :hover {
     background-color: var(--light-green);
     color: white;
-    svg{
-        path{
-            fill: white;
-            }
+    svg {
+      path {
+        fill: white;
+      }
     }
   }
-`
+`;

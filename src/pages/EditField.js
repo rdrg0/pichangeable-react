@@ -1,12 +1,13 @@
+import React from "react";
 import styled from "@emotion/styled";
 
-export default function EditField(){
+export default function EditField() {
   return (
-      <Container>
-        <h1>Edit Field</h1>
-      </Container>
-    );
-  }
+    <Container>
+      <h1>Edit Field</h1>
+    </Container>
+  );
+}
 
 const Container = styled.div`
   background: #fff;

@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 import { FontSizeMedium } from "./UI/Typography";
 import { LinkendinIcon } from "./UI/Icons";
@@ -15,18 +16,17 @@ export const TeamProfiles = () => {
         <TeamProfileImage src={AnaMaria} alt="Ana Maria" />
         <FontSizeMedium>Ana Maria Zárate</FontSizeMedium>
         <Icons>
-          <LinkendinIcon/>
-          <GithubIcon/>
+          <LinkendinIcon />
+          <GithubIcon />
         </Icons>
       </TeamProfile>
-
 
       <TeamProfile>
         <TeamProfileImage src={AldoCanales} alt="Aldo Canales" />
         <FontSizeMedium>Aldo Canales</FontSizeMedium>
         <Icons>
-          <LinkendinIcon/>
-          <GithubIcon/>
+          <LinkendinIcon />
+          <GithubIcon />
         </Icons>
       </TeamProfile>
 
@@ -34,8 +34,8 @@ export const TeamProfiles = () => {
         <TeamProfileImage src={EderRocca} alt="Eder Rocca" />
         <FontSizeMedium>Eder Rocca</FontSizeMedium>
         <Icons>
-          <LinkendinIcon/>
-          <GithubIcon/>
+          <LinkendinIcon />
+          <GithubIcon />
         </Icons>
       </TeamProfile>
 
@@ -43,8 +43,8 @@ export const TeamProfiles = () => {
         <TeamProfileImage src={NatLinares} alt="Nat Linares" />
         <FontSizeMedium>Nathaly Linares</FontSizeMedium>
         <Icons>
-          <LinkendinIcon/>
-          <GithubIcon/>
+          <LinkendinIcon />
+          <GithubIcon />
         </Icons>
       </TeamProfile>
 
@@ -52,14 +52,13 @@ export const TeamProfiles = () => {
         <TeamProfileImage src={RodrigoArriaran} alt="Rodrigo Arriaran" />
         <FontSizeMedium>Rodrigo Arriarán</FontSizeMedium>
         <Icons>
-          <LinkendinIcon/>
-          <GithubIcon/>
+          <LinkendinIcon />
+          <GithubIcon />
         </Icons>
       </TeamProfile>
-
     </TeamProfilesContainer>
-  )
-}
+  );
+};
 
 const TeamProfilesContainer = styled.div`
   display: flex;
@@ -67,7 +66,7 @@ const TeamProfilesContainer = styled.div`
   margin-left: 10%;
   gap: 5%;
   width: 80%;
-  `;
+`;
 
 const TeamProfile = styled.div`
   display: flex;
@@ -85,7 +84,7 @@ const TeamProfileImage = styled.img`
 const Icons = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content:center;
+  justify-content: center;
   align-items: flex-end;
   margin-top: 5%;
   gap: 15%;
