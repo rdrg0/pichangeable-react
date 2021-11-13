@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "@emotion/styled";
 /** @jsxImportSource @emotion/react */
-import { JoinIcon, LoginIcon, LupitaIcon } from "./UI/Icons";
+import { JoinIcon, LoginIcon, Logout, LupitaIcon } from "./UI/Icons";
 import { ButtonWhite, ButtonGreen } from "./UI/Buttons";
 import { TitleGreen, TitleGray } from "./UI/Typography";
 import logo from "./UI/logo.png";
+import { NavLink } from "react-router-dom";
+import { useHistory } from 'react-router';
+
 const HeaderContainer = styled.div`
   padding: unset;
   display: grid;
@@ -38,6 +41,7 @@ const ContainerSearch = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
+    width: 90%;
     input{
         vertical-align: middle;
         position: relative;        
@@ -58,7 +62,14 @@ const ContainerSearch = styled.div`
     
 `;
 
+
 export default function Header(){
+    const history = useHistory();
+    function handleLogout(){
+        sessionStorage.removeItem("token");
+        history.push("/home");
+    }
+    
     return(        
         <HeaderContainer style={{justifyContent: "space-between"}}>
             <div className="logo">
@@ -71,8 +82,13 @@ export default function Header(){
                     <label htmlFor="search"><LupitaIcon /></label>
                     <input type="search" id="search" placeholder="Find your field ... "/>
                 </ContainerSearch>
-                <ButtonWhite><JoinIcon/>Join</ButtonWhite>
-                <ButtonGreen><LoginIcon/>Login</ButtonGreen>
+                { !sessionStorage.getItem("token")===true ?
+                (<><NavLink style={{textDecoration:"none"}} to="/signflow">
+                        <ButtonWhite><JoinIcon/>Join</ButtonWhite>
+                    </NavLink>
+                    <NavLink  style={{textDecoration:"none"}} to="/login">
+                        <ButtonGreen><LoginIcon/>Login</ButtonGreen>
+                    </NavLink></>) : (<><div style={{width:"25%"}}></div><ButtonGreen onClick={handleLogout}><Logout/>Logout</ButtonGreen></>)}
             </div>
         </HeaderContainer>
         
