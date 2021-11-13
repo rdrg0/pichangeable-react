@@ -67,10 +67,9 @@ const FooterContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 2% 5% 2% 5%;
-  width: 100%;
-  border-top: 1px solid var(--dark-green);
-`;
+  padding: 2%  5% 2% 5%;
+  `;
+
 
 const DivFooter = styled.div`
   display: flex;
