@@ -1,9 +1,8 @@
-import React from "react";
 import styled from "@emotion/styled";
+import React from "react";
 import {
   FontMediumGray,
   FontSizeBig,
-  FontSizeSmall,
   FontSizeMedium,
 } from "../component/UI/Typography";
 import public_cancha from "../component/UI/busca_una_cancha.jpg";

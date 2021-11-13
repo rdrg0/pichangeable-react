@@ -67,7 +67,8 @@ export default function LoginPage() {
     e.preventDefault();
     const { email, password } = ctx.session;
     console.log(email, password);
-    await AxiosLogin({ email, password });
+    const datauser = await AxiosLogin({ email, password });
+    await ctx.signIn(datauser.token, datauser.name, datauser.role);
   }
 
   return (

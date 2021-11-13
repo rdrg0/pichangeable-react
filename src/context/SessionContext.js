@@ -20,9 +20,8 @@ export const SessionProvider = ({ children }) => {
     console.log(e.target.name, e.target.value);
   }
 
-  function signIn(token, userData) {
-    // dispatch({ type: SIGN_IN, token, userData });
-    console.log(token, userData);
+  function signIn(token, name, role) {
+    dispatch({ type: SIGN_IN, token, name, role });
   }
 
   function logout() {
