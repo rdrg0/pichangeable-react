@@ -15,6 +15,7 @@ import { SessionProvider } from "./context/SessionContext";
 import { Hero } from "./component/Hero";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
+import { Calendar } from "component/Calendar";
 
 const globalCSS = css`
   @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
@@ -55,7 +56,7 @@ function App() {
       <SessionProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Calendar} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/home" component={Home} />
