@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 export const ButtonGreen = styled.button`
   padding: 8px 16px;
-  height: 40px;
   color: white;
   display: flex;
   background: var(--light-green);
@@ -38,7 +37,6 @@ export const ButtonGreen = styled.button`
 
 export const ButtonWhite = styled.button`
   padding: 8px 16px;
-  height: 40px;
   color: var(--dark-green);
   background: white;
   border-radius: 8px;
