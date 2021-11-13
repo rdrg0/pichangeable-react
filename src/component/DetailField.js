@@ -2,23 +2,26 @@ import styled from "@emotion/styled";
 import cancha from "./UI/cancha8.jpg"
 import Map from "./Map"
 import { FontMediumGray, FontSizeBig, TitleGraySmaller } from "./UI/Typography";
-import { ButtonGreen } from "./UI/Buttons";
+import { ButtonGreen, ButtonWhite } from "./UI/Buttons";
 import { SportIcon,PersonIcon,FieldIcon } from "./UI/Icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { Modal } from "@material-ui/core";
 import { useState } from "react";
+import React from "react";
 
 const useStyles = makeStyles((theme)=>({
     modal:{
         position: "absolute",
-        width:400,
-        backgroundColor: "white",
-        border:'2px solid #000',
-        top:"50%",
-        left: "50%"
-    }
-    }
-    )
+        width:"50%",
+        height:"70%",
+        backgroundColor: "transparent",
+        borderRadius: "8px",
+        border:"transparent",
+        marginTop: "4%",
+        margin: "0 auto",
+        padding: "25px"
+        }
+    })
 )
 const DetailContainer = styled.div`
     display:flex;
@@ -28,6 +31,7 @@ const DetailContainer = styled.div`
     gap: 60px;
     padding:20px;
     margin:8px;
+    position: relative;
 `
 const Details = styled.div`
     display:flex;
@@ -36,7 +40,7 @@ const Details = styled.div`
     width:50%;
     margin:0; 
     padding:20px;
-    position: relative;
+    margin-left:10px;
     img{
         width:80%;
         height:65%;  
@@ -48,7 +52,6 @@ const Details = styled.div`
     button{
         align-self: center;
     }
-    margin-left:10px;
 `
 
 
@@ -56,7 +59,6 @@ const ContainerImportant=styled.div`
     display:flex;
     flex-direction:row;
     justify-content: space-between;
-    
 `
 
 const ContainerVertical=styled.section`
@@ -64,7 +66,6 @@ const ContainerVertical=styled.section`
     flex-direction:column;
     margin:0px 25px;
     gap:10px;
-   
 `
 
 const DivBorder = styled.div`
@@ -94,14 +95,36 @@ export default function DetailField(){
       setModal(!modal);
   }
   const body = (
-      <div className={styles.modal}>
-          Hola que jace
-          dasdas
-          dasd
-          dasda
+      <div className={styles.modal} 
+      style={{width: '100%', 
+              height: '100%', 
+              backgroundColor:"white",
+              display: 'flex',
+              flexDirection: 'column',
+              gap:"30px"
+              }
+            }>
+            <FontMediumGray style={{fontWeight: 1000,fontSize: 26}}>Contact To Book</FontMediumGray>
+            <FontMediumGray>We are working with the facility owner to provide online booking of this facility.
+            In the meantime, please contact the facility owner to enquire about a booking.</FontMediumGray>
+            <FontMediumGray style={{fontWeight: 1000,fontSize: 26,alignSelf: 'center'}}>Please Contact:</FontMediumGray>
+            <FontMediumGray style={{alignSelf: 'center'}}>020 7095 5100</FontMediumGray>
+            <div  style={{display: 'flex',justifyContent: 'center', flexDirection: 'row', gap: 30, paddingBottom:0}}>
+                <ButtonWhite>I was enable to <br />booking this facility</ButtonWhite>
+                <ButtonGreen>I succesfully booked<br /> this facility</ButtonGreen>
+            </div>
+            <button style={{border: "transparent", backgroundColor: "transparent", textAlign: "right", 
+                    fontFamily: "Inter",
+                    fontSize: 18,
+                    letterSpacing: 1.25,
+                    paddingRight:45,
+                    color: "var(--dark-gray)",
+                    textTransform: "uppercase"}}onClick={openModal}>Cancel</button>
       </div>
   )
+
   return (
+      <>
       <DetailContainer>
         <Details style={{borderRight: "3px solid var(--light-gray)"}}>
             <ContainerVertical>
@@ -131,12 +154,12 @@ export default function DetailField(){
         <Details>
             <FontSizeBig style={{color:"var(--dark-green)"}}>Location</FontSizeBig>
             <Map 
-                x={Math.random(15)*-1.0120}
-                y={Math.random(99)*-1.12}
+                x={Math.random()*-1.0120}
+                y={Math.random()*-1.12}
             />
             <FontSizeBig style={{color:"var(--dark-green)"}}>Make a Booking</FontSizeBig>
             <FontMediumGray>To reserve this venue, click the button below to reach out directly.</FontMediumGray>
-            <ButtonGreen className={styles.button} onClick={openModal}>Book Facility</ButtonGreen>
+            <ButtonGreen onClick={openModal}>Book Facility</ButtonGreen>
             <Modal  className={styles.modal}
                 open={modal}
                 onClose={openModal}>
@@ -144,5 +167,6 @@ export default function DetailField(){
                 </Modal>
         </Details>
       </DetailContainer>
+      </>
     );
   }

@@ -11,22 +11,11 @@ const HeaderContainer = styled.div`
   width: 100%;
   height: 100px;
   grid-template-columns: 60% 40%;
+  padding-right:5%;
   flex-direction: row;
   align-items: center;
   background-color: white;
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
-    align-items: center;
-    background-color: white;
-    .buttons{
-        display: flex;
-        flex-direction: row;
-        gap: 20px;
-        align-items: center;
-    }
-    .logo{
+  .logo{
         margin:20px;
         display:flex;
         flex-direction: row;
@@ -37,29 +26,36 @@ const HeaderContainer = styled.div`
             margin: initial;
         }
     }
-  }
-`;
-const ContainerSearch = styled.div`
-    width: 250px;
-    vertical-align: middle;
-    position: relative;
+  .buttons {
     display: flex;
-    gap: 12px;
+    flex-direction: row;
+    gap: 30px;
     align-items: center;
-    color: var(--gray);
-    width: 249px;
-    height: 38px;
-    padding: 8px;
-    border: none;
-    ::placeholder {
-      color: var(--gray);
-      font-family: Inter;
-      font-size: 16px;
-      line-height: 24px;
-      letter-spacing: 1.25px;
-      text-transform: uppercase;
+    background-color: white;
     }
-  }
+`
+const ContainerSearch = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    input{
+        vertical-align: middle;
+        position: relative;        
+        color: var(--gray);
+        height: 38px;
+        padding: 8px;
+        border: none;
+        font-family: Inter;
+        ::placeholder {
+        color: var(--dark-gray);
+        font-family: Inter;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 1.25px;
+        text-transform: uppercase;
+        }
+    }
+    
 `;
 
 export default function Header(){
