@@ -9,7 +9,7 @@ import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
 import { SessionProvider } from "./context/SessionContext";
-import Hero from "./component/Hero";
+import { Hero } from "./component/Hero";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -48,7 +48,7 @@ function App() {
       <SessionProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Login} />
+            <Route exact path="/" component={Hero} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <ProtectedRoute path="/home" component={Home} />

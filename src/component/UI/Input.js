@@ -1,5 +1,5 @@
+import React from "react";
 import styled from "@emotion/styled";
-
 
 function Input({ Icon, id, label, width, ...props }) {
   const Container = styled.div`
@@ -12,22 +12,21 @@ function Input({ Icon, id, label, width, ...props }) {
     border-radius: 8px;
     padding: 8px;
     margin-bottom: 16px;
-    border: 1px solid #68D391;
+    border: 1px solid #68d391;
     input {
-      width: 100%;     
+      width: 100%;
       border: none;
       outline: none;
-      font-family: Inter;      
+      font-family: Inter;
       font-size: 16px;
       line-height: 24px;
       letter-spacing: 0.5px;
 
-      :placeholder{
-        color: #8E8E8E;
+      :placeholder {
+        color: #8e8e8e;
       }
-
-    }    
-  `
+    }
+  `;
   return (
     <>
       <label htmlFor={id}>{label}</label>
@@ -36,8 +35,7 @@ function Input({ Icon, id, label, width, ...props }) {
         <input id={id} {...props} />
       </Container>
     </>
-
-  )
+  );
 }
 
 export default Input;
