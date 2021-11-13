@@ -152,7 +152,6 @@ export const FieldIcon = () => {
   )
 }
 
-
 export const PersonIcon = () => {
   return (
     <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -160,7 +159,6 @@ export const PersonIcon = () => {
   </svg>
   )
 }
-
 
 export const LocationIcon = () => {
   return (
