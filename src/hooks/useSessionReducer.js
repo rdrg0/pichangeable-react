@@ -7,10 +7,10 @@ export const CHANGE_LOGIN_VALUE = "CHANGE_LOGIN_VALUE";
 function sessionReducer(state, action) {
   switch (action.type) {
     case SIGN_IN:
-      const { userData, token } = action;
-      return { ...state, userData, token };
+      const { name, role, token } = action;
+      return { ...state, name, role, token };
     case SIGN_OUT:
-      return { ...state, userData: null, token: null };
+      return { ...state, token: null };
     case CHANGE_LOGIN_VALUE:
       return { ...state, [action.target.name]: action.target.value };
     default:
@@ -21,7 +21,8 @@ function sessionReducer(state, action) {
 export default function useSessionReducer() {
   const [state, dispatch] = useReducer(sessionReducer, {
     token: null,
-    userData: null,
+    name: null,
+    role: null,
     email: "",
     password: "",
   });

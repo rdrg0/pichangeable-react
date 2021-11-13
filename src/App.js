@@ -48,7 +48,7 @@ function App() {
       <SessionProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Hero} />
+            <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <ProtectedRoute path="/home" component={Home} />

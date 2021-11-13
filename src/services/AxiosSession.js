@@ -6,10 +6,10 @@ export const AxiosLogin = (data) => {
   return axios("/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    data: { email: data.email, password: data.paswword },
+    data: data,
   })
     .then(function (response) {
-      sessionStorage.setItem("token", JSON.stringify(response.data.token));
+      // sessionStorage.setItem("token", JSON.stringify(response.data.token));
       return response.data;
     })
     .catch(function (error) {
