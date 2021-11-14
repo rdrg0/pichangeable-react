@@ -8,22 +8,26 @@ import { ButtonWhite } from "../component/UI/Buttons";
 import ListItem from "../component/Card";
 import { NavLink } from "react-router-dom";
 import { Hero } from "../component/Hero";
-import { AxiosIndexField } from "services/AxiosField";
+import { AxiosIndexField, AxiosShowField } from "services/AxiosField";
 import cancha from "../component/UI/cancha8.jpg";
 
 export default function Home() {
   const [fields, setFields] = React.useState([]);
   const [bestFields, setBestFields] = React.useState([]);
 
+
   React.useEffect(() => {
     async function fetchData() {
       const result = await AxiosIndexField();
-      setFields(result);
-      setBestFields(result.slice(0, 3));
+      result.forEach(async(field) => {
+        const result = await AxiosShowField(field.id);
+        setFields(result);
+      });
     }
     fetchData();
+    console.log(fields);
   }, []);
-  console.log(fields);
+
   
 
   return (
