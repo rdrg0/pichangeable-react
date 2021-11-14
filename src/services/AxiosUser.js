@@ -18,6 +18,7 @@ export const AxiosShowUser = () => {
 };
 
 export const AxiosCreateUser = (data) => {
+  console.log(data);
   return axios('/users',{
     method: 'POST',
     headers: {
