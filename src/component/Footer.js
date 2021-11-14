@@ -69,6 +69,7 @@ const FooterContainer = styled.div`
   align-items: center;
   padding: 3% 0% ;
   gap: 150px;
+  height: 10%;
   `;
 
 
