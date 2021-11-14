@@ -20,6 +20,7 @@ const HeaderContainer = styled.div`
   background-color: white;
   .logo{
         margin:20px;
+        cursor: pointer;
         display:flex;
         flex-direction: row;
         align-items: center;
@@ -70,9 +71,13 @@ export default function Header(){
         history.push("/home");
     }
     
+    function returnHome(){
+        history.push("/home");
+    }
+
     return(        
         <HeaderContainer style={{justifyContent: "space-between"}}>
-            <div className="logo">
+            <div className="logo" onClick={returnHome}>
                     <img src={logo} alt="logo de pichangueable"/>
                     <TitleGray>Pichangue</TitleGray>
                     <TitleGreen>able</TitleGreen>

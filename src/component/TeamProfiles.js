@@ -12,15 +12,7 @@ import RodrigoArriaran from "./Avatars/RodrigoArriaran.jpeg";
 export const TeamProfiles = () => {
   return (
     <TeamProfilesContainer>
-      <TeamProfile>
-        <TeamProfileImage src={AnaMaria} alt="Ana Maria" />
-        <FontSizeMedium style={{fontSize:'20px'}}>Ana Zárate</FontSizeMedium>
-        <Icons>
-          <LinkendinIcon />
-          <GithubIcon />
-        </Icons>
-      </TeamProfile>
-
+      
       <TeamProfile>
         <TeamProfileImage src={AldoCanales} alt="Aldo Canales" />
         <FontSizeMedium style={{fontSize:'20px'}}>Aldo Canales</FontSizeMedium>
@@ -30,6 +22,17 @@ export const TeamProfiles = () => {
         </Icons>
       </TeamProfile>
 
+
+      <TeamProfile>
+        <TeamProfileImage src={AnaMaria} alt="Ana Maria" />
+        <FontSizeMedium style={{fontSize:'20px'}}>Ana Zárate</FontSizeMedium>
+        <Icons>
+          <LinkendinIcon />
+          <GithubIcon />
+        </Icons>
+      </TeamProfile>
+
+      
       <TeamProfile>
         <TeamProfileImage src={EderRocca} alt="Eder Rocca" />
         <FontSizeMedium style={{fontSize:'20px'}}>Eder Rocca</FontSizeMedium>

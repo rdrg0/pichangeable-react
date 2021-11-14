@@ -10,6 +10,7 @@ import { NotFound } from "./pages/NotFound";
 import { SessionProvider } from "./context/SessionContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import SignFlow from "pages/SignFlow";
+import DetailFieldPage from "pages/DetailFieldPage";
 
 const globalCSS = css`
   @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
@@ -50,6 +51,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/signflow" component={SignFlow} />
+            <Route path="/detailfield" component={DetailFieldPage} />
             <Route path="/home" component={Home} />
             <ProtectedRoute path="/newfield" component={NewField} />
             <ProtectedRoute path="/editfield" component={EditField} />
