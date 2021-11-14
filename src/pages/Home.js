@@ -8,24 +8,26 @@ import { ButtonWhite } from "../component/UI/Buttons";
 import ListItem from "../component/Card";
 import { NavLink } from "react-router-dom";
 import { Hero } from "../component/Hero";
-import { AxiosIndexField } from "services/AxiosField";
-import cancha from "../component/UI/cancha8.jpg";
+import { useHistory } from "react-router-dom";
+import cancha1 from "../component/UI/cancha7.jpg";
+import cancha2 from "../component/UI/cancha8.jpg";
+import cancha3 from "../component/UI/cancha11.jpg";
 
 export default function Home() {
-  const [fields, setFields] = React.useState([]);
-  const [bestFields, setBestFields] = React.useState([]);
+  const [fields, setFields] = React.useState(JSON.parse(sessionStorage.getItem("fieldsAllData")));
+  const history = useHistory();
 
-  React.useEffect(() => {
-    async function fetchData() {
-      const result = await AxiosIndexField();
-      setFields(result);
-      setBestFields(result.slice(0, 3));
-    }
-    fetchData();
-  }, []);
-  console.log(fields);
-  
-
+  const bestFields = [ 
+    {id: 1000, ubication_id: 35, name: 'All Sport',sport_type:'soccer', field_type: 'sintetic', capacity: 9,
+    summary:'Unfortunately this sport and recreation facility currently does offer instant online booking via  To speak with a member of staff at Whitechapel Sports Centre about the rental of their facilities, you will need to reach out directly via the contact details we have listed for Whitechapel Sports Centre, 55 Durward Street, London, E1 5BA.', price_hour: 35 ,
+    address: 'Jr Amabilidad 367', images: cancha1},
+    {id: 1001, ubication_id: 36, name: 'Tu canchita',sport_type:'soccer', field_type: 'grass', capacity: 20,
+    summary:'Unfortunately this sport and recreation facility currently does offer instant online booking via  To speak with a member of staff at Whitechapel Sports Centre about the rental of their facilities, you will need to reach out directly via the contact details we have listed for Whitechapel Sports Centre, 55 Durward Street, London, E1 5BA.', price_hour: 50 ,
+    address: 'Jr Honestidad 4521', images: cancha2},
+    {id: 1002, ubication_id: 37, name: 'Tu pelotita',sport_type:'soccer', field_type: 'sintetic', capacity: 10,
+    summary:'Unfortunately this sport and recreation facility currently does offer instant online booking via  To speak with a member of staff at Whitechapel Sports Centre about the rental of their facilities, you will need to reach out directly via the contact details we have listed for Whitechapel Sports Centre, 55 Durward Street, London, E1 5BA.', price_hour: 30 ,
+    address: 'Av Indescente 999', images: cancha3},
+  ];
 
   return (
     <>
@@ -41,8 +43,8 @@ export default function Home() {
         <LisContainer>
         {bestFields.map((field) => (
           <ListItem
-             id={field.id}
-            image={cancha}
+            id={field.id}
+            image={field.images}
             price_hour={field.price_hour}
             name={field.name}
             address={field.address}
@@ -69,10 +71,10 @@ export default function Home() {
       </>
       ) : (
         <FieldsContainer >
-        {fields.slice(0, 6).map(field => (
+        {fields && fields.map(field => (
           <ListItem 
           id={field.id}
-          image={cancha}
+          image={field.images[0].image_url}
           price_hour={field.price_hour}
           name={field.name}
           address={field.address}

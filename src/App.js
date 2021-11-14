@@ -11,6 +11,7 @@ import { SessionProvider } from "./context/SessionContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import SignFlow from "pages/SignFlow";
 import DetailFieldPage from "pages/DetailFieldPage";
+import { Calendar } from "./component/Calendar";
 
 const globalCSS = css`
   @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
@@ -47,9 +48,10 @@ function App() {
       <SessionProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/calendar" component={Calendar} />
             <Route path="/signflow" component={SignFlow} />
             <Route path="/detailfield" component={DetailFieldPage} />
             <Route path="/home" component={Home} />

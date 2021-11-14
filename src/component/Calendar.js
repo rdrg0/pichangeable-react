@@ -1,8 +1,13 @@
 import * as React from "react";
 import Paper from "@material-ui/core/Paper";
-import { ViewState } from "@devexpress/dx-react-scheduler";
+import {
+  ViewState,
+  EditingState,
+  IntegratedEditing,
+} from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
+  DayView,
   WeekView,
   Appointments,
 } from "@devexpress/dx-react-scheduler-material-ui";
@@ -11,7 +16,12 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import TextField from "@mui/material/TextField";
 import DatePicker from "@mui/lab/DatePicker";
-import { GetDate } from "../utils/GetDate";
+import { GetDate, GetDateFormat } from "../utils/GetDate";
+import Popover from "@mui/material/Popover";
+import TimePicker from "@mui/lab/TimePicker";
+import { Button } from "@material-ui/core";
+import { ButtonGreen } from "../component/UI/Buttons";
+import { AxiosCreateReservation } from "services/AxiosReservation";
 
 const schedulerData = [
   {
@@ -55,9 +65,70 @@ const ContainerCalendar = styled.div`
   margin: 0 auto;
 `;
 
+const FormReservation = styled.form`
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  /* background-color: blue; */
+`;
+
+const Input = styled.input`
+  height: 40px;
+  border: 1px solid var(--light-green);
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 8px;
+`;
+
 export const Calendar = () => {
   const [value, setValue] = React.useState(GetDate());
-  console.log(GetDate());
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [startTime, setStartTime] = React.useState(null);
+  const [endTime, setEndTime] = React.useState(null);
+
+  // function clickModalReservation(e) {
+  //   e.preventDefault();
+  //   console.log(e.target.value);
+  //   console.log("aqui");
+  // }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = (e) => {
+    setAnchorEl(null);
+  };
+  
+  const sendDataReservation = async (e) => {
+    e.preventDefault();
+
+    function addZero(i) {
+      if (i < 10) {i = "0" + i}
+      return i;
+    }
+
+    console.log(GetDateFormat(value), addZero(startTime.getHours()), addZero(endTime.getHours()));
+    // 01/03/2020 , 01:00 , 02:00
+    let datareservation = {
+      start_date_hour: startTime,
+      end_date_hour: endTime,
+      total: 1000,
+      field_id: 11,
+    };
+    // GetDateFormat(value), addZero(startTime.getHours()), addZero(endTime.getHours())
+    await AxiosCreateReservation(datareservation);
+  }
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <>
@@ -72,12 +143,56 @@ export const Calendar = () => {
         />
       </LocalizationProvider>
       <ContainerCalendar>
-        <Paper>
+        <Paper onClick={handleClick} aria-describedby={id}>
           <Scheduler data={schedulerData}>
             <ViewState currentDate={value} />
-            <WeekView startDayHour={9} endDayHour={23} />
+            <DayView startDayHour={9} endDayHour={23} />
             <Appointments />
           </Scheduler>
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <FormReservation>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <TimePicker
+                  label="Hora inicio"
+                  value={startTime}
+                  onChange={(newValue) => {
+                    setStartTime(newValue);
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <TimePicker
+                  label="Hora fin"
+                  value={endTime}
+                  onChange={(newValue) => {
+                    setEndTime(newValue);
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+              <Input
+                type="text"
+                placeholder="Ingresa tu nombre"
+                name="name"
+                // value={ctx.session.email}
+                // onChange={ctx.handleChangeLogin}
+              ></Input>
+              <div onClick={sendDataReservation}>
+              <ButtonGreen> Enviar reserva</ButtonGreen>
+              </div>
+              <p>Press "esc" for exit</p>
+            </FormReservation>
+          </Popover>
         </Paper>
       </ContainerCalendar>
     </>

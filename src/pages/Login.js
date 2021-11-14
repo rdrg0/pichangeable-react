@@ -6,6 +6,7 @@ import { ButtonGreen } from "../component/UI/Buttons";
 import { useContext } from "react";
 import { SessionContext } from "../context/SessionContext";
 import { AxiosLogin } from "../services/AxiosSession";
+import { AxiosIndexField, AxiosShowField } from "services/AxiosField";
 import { useHistory } from "react-router-dom";
 
 const Login = styled.div`
@@ -66,6 +67,8 @@ export default function LoginPage() {
   const ctx = useContext(SessionContext);
   const history = useHistory();
 
+  let dataAllFields = [];
+
   async function loginUser(e) {
     e.preventDefault();
     const { email, password } = ctx.session;
@@ -75,9 +78,20 @@ export default function LoginPage() {
     sessionStorage.setItem('token', await datauser.token)
     sessionStorage.setItem('role', await datauser.role)
     sessionStorage.setItem('id', await datauser.id)
-    history.push("/home");
+    await AxiosIndexField();
+    const dataFields = JSON.parse(sessionStorage.getItem("fieldsData"));
+      dataFields.forEach(async(field) => {
+        const data = await AxiosShowField(field.id);
+        dataAllFields.push(await data);
+        console.log("Por primera vez");
+      });
+    setTimeout(function(){
+      sessionStorage.setItem("fieldsAllData", JSON.stringify(dataAllFields));
+      console.log("Por segunda vez");
+      history.push("/home");
+    },2000);
   }
-
+  
   return (
     <>
       <Login>
