@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 /** @jsxImportSource @emotion/react */
 import { FontSizeBig, FontSizeMedium } from "./UI/Typography";
 import { FieldIcon, SportIcon, LocationIcon } from "./UI/Icons";
+import { useHistory } from "react-router";
 
 const Card = styled.li`
   padding: unset;
@@ -18,6 +19,10 @@ const Card = styled.li`
   margin: 0px;
   gap: 10px;
   border-bottom: 12px solid var(--dark-green);
+  cursor: pointer;
+  :hover {
+    transform: scale(1.01);
+  }
   .image {
     width: 100%;
     height: 100%;
@@ -56,15 +61,22 @@ const Card = styled.li`
   }
 `;
 
-export default function ListItem({image, price, name, address, field_type, sport_type, location}) {
+export default function ListItem({id,image, price_hour, name, address, field_type, sport_type, location,summary,capacity}) {
+  const history = useHistory();
+  function ShowDetails(e) {
+    let id=e.target.id;
+    let field={id,image, price_hour, name, address, field_type, sport_type, location,summary,capacity};
+    sessionStorage.setItem("selectedField", JSON.stringify(field));
+    history.push("/detailfield")
+  }
   return (
     <>
-      <Card key={1}>
+      <Card key={id} onClick={ShowDetails}>
         <div className="image">
           <img src={image} alt="imagen de una cancha" />
         </div>
         <div className="information">
-          <FontSizeBig>$ {price}</FontSizeBig>
+          <FontSizeBig>${price_hour}</FontSizeBig>
           <FontSizeMedium>{name}</FontSizeMedium>
         </div>
         <div className="address">
