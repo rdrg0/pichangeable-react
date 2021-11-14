@@ -25,7 +25,6 @@ const ContainerForm = styled.div`
   display: flex;
   flex-direction: column;
   width: 380px;
-  height: 468px;
   background: white;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

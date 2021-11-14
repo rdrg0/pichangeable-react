@@ -10,10 +10,12 @@ import { NavLink } from "react-router-dom";
 import { Hero } from "../component/Hero";
 import { AxiosIndexField, AxiosShowField } from "services/AxiosField";
 import cancha from "../component/UI/cancha8.jpg";
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
   const [fields, setFields] = React.useState([]);
   const [bestFields, setBestFields] = React.useState([]);
+  const history = useHistory();
 
 
   React.useEffect(() => {
@@ -30,6 +32,7 @@ export default function Home() {
 
   
 
+
   return (
     <>
       <Header />
@@ -44,13 +47,16 @@ export default function Home() {
         <LisContainer>
         {bestFields.map((field) => (
           <ListItem
+             id={field.id}
             image={cancha}
-            price={field.price_hour}
+            price_hour={field.price_hour}
             name={field.name}
             address={field.address}
             field_type={field.field_type}
             sport_type={field.sport_type}
             location={field.ubication_id}
+            summary={field.summary}
+            capacity={field.capacity}
           />
         ))}
         </LisContainer>
@@ -68,16 +74,19 @@ export default function Home() {
       <TeamProfiles />
       </>
       ) : (
-        <FieldsContainer>
+        <FieldsContainer >
         {fields.slice(0, 6).map(field => (
-          <ListItem
+          <ListItem 
+          id={field.id}
           image={cancha}
-          price={field.price_hour}
+          price_hour={field.price_hour}
           name={field.name}
           address={field.address}
           field_type={field.field_type}
           sport_type={field.sport_type}
           location={field.ubication_id}
+          summary={field.summary}
+          capacity={field.capacity}
           />
         ))}
         </FieldsContainer>
@@ -131,7 +140,9 @@ const FieldsContainer = styled.div`
   justify-content: center;
   justify-items: center;
   gap: 5%;
-  padding: 0% 10% 0% 10%;
+  padding: 0% 5% 0% 5%;
   align-items: center;
   width: 100%;
+  padding-bottom:8%;
+  padding-top: 3%
 `;
