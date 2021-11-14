@@ -77,19 +77,19 @@ export default function ListItem({id,image, price_hour, name, address, field_typ
         </div>
         <div className="information">
           <FontSizeBig>${price_hour}</FontSizeBig>
-          <FontSizeMedium>{name}</FontSizeMedium>
+          <FontSizeMedium>{name.charAt(0).toUpperCase() + name.slice(1)}</FontSizeMedium>
         </div>
         <div className="address">
-          <label style={{fontSize: 15, color: "var(--dark-gray)"}}>{address}</label>
+          <label style={{fontSize: 15, color: "var(--dark-gray)"}}>{address.charAt(0).toUpperCase() + address.slice(1)}</label>
         </div>
         <div className="icons">
           <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
             <FieldIcon/>
-            <label  style={{fontSize: 16, color: "var(--dark-gray)"}}>{field_type}</label>
+            <label  style={{fontSize: 16, color: "var(--dark-gray)"}}>{field_type.charAt(0).toUpperCase() + field_type.slice(1)}</label>
           </div>
           <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
             <SportIcon/>
-            <label  style={{fontSize: 16, color: "var(--dark-gray)"}}>{sport_type}</label>
+            <label  style={{fontSize: 16, color: "var(--dark-gray)"}}>{sport_type.charAt(0).toUpperCase() + sport_type.slice(1)}</label>
           </div>
           <div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
             <LocationIcon/> 

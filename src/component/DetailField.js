@@ -127,24 +127,24 @@ export default function DetailField({name, sport_type, field_type, capacity, sum
         <Details style={{borderRight: "3px solid var(--light-gray)"}}>
             <ContainerVertical>
                 <ContainerImportant>
-                    <TitleGraySmaller>{name}</TitleGraySmaller>
+                    <TitleGraySmaller>{name.charAt(0).toUpperCase() + name.slice(1)}</TitleGraySmaller>
                     <TitleGraySmaller>S/.{price_hour}</TitleGraySmaller>
                 </ContainerImportant>
                 <ContainerImportant>
-                    <FontMediumGray>{address}</FontMediumGray>
+                    <FontMediumGray>{address.charAt(0).toUpperCase() + address.slice(1)}</FontMediumGray>
                     <FontMediumGray>El Agustino</FontMediumGray>
                 </ContainerImportant>
             </ContainerVertical>
             <DivBorder>
-                    <div><SportIcon/><TitleGraySmaller>{sport_type}</TitleGraySmaller></div>
-                    <div><FieldIcon/><TitleGraySmaller>{field_type}</TitleGraySmaller></div>
+                    <div><SportIcon/><TitleGraySmaller>{sport_type.charAt(0).toUpperCase() + sport_type.slice(1)}</TitleGraySmaller></div>
+                    <div><FieldIcon/><TitleGraySmaller>{field_type.charAt(0).toUpperCase() + field_type.slice(1)}</TitleGraySmaller></div>
                     <div><PersonIcon/><TitleGraySmaller>{capacity}-{capacity}</TitleGraySmaller></div>
             </DivBorder>
             <img src={cancha} alt="image_de_cancha"/>
             <ContainerVertical>
                 <FontSizeBig style={{color:"var(--dark-green)"}}>Acerca de la cancha...</FontSizeBig>
             <FontMediumGray>
-            {summary}
+            {summary.charAt(0).toUpperCase() + summary.slice(1)}
             </FontMediumGray>
             </ContainerVertical>
         </Details>

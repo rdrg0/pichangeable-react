@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
-import { DollarIcon, LupitaIcon } from "component/UI/Icons";
+import { DollarIcon, LupitaIcon, CapacityIcon } from "component/UI/Icons";
 import Input from "component/UI/Input";
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { AxiosCreateField } from "services/AxiosField";
 
 const Title = styled.h2`
   margin: 32px 0px;
@@ -111,71 +113,115 @@ const PhotoContainer = styled.div`
   height: 136px;
   background: #f5f5f6;
 `;
-const PhotoCard = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 120px;
-  left: 8px;
-  top: 8px;
-  background: #e1e2e1;
-  border-radius: 8px;
-`;
 
 function NewField() {
+  const history= useHistory();
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e)
+    let forminfo = new FormData();
+    let images = URL.createObjectURL(e.target.elements.images.files[0])
+    let name = e.target.elements.name.value;
+    let address = e.target.elements.address.value;
+    let capacity = e.target.elements.capacity.value;
+    let summary = e.target.elements.summary.value;
+    let price_hour=e.target.elements.price_hour.value;
+    let sport_type=e.target.elements.sport_type.value;
+    let field_type=e.target.elements.field_type.value;
+    let user_id=sessionStorage.getItem("id");
+    let ubication_id = "4"
+    forminfo.append("name", name);
+    forminfo.append("address", address);
+    forminfo.append("capacity", capacity);
+    forminfo.append("address", address);
+    forminfo.append("summary", summary);
+    forminfo.append("price_hour", price_hour);
+    forminfo.append("sport_type",sport_type);
+    forminfo.append("field_type", field_type)
+    forminfo.append("images", images)
+    forminfo.append("user_id", user_id)
+    console.log({name,address,capacity,sport_type,field_type,summary,price_hour,images,user_id,ubication_id});
+    console.log(forminfo.toString());
+    AxiosCreateField(forminfo).then(data => console.log(data));
+    history.push("/home");
+  }
+
+
   return (
     <>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Title>Registrar una nueva cancha</Title>
         <Input
           type="text"
+          placeholder="Enter the name of your field"
+          id="name"
+          name="name"
+          label="name"
+          Icon={LupitaIcon}
+          width="100%"
+        />
+        <Input
+          type="text"
           placeholder="Start typing to autocomplete"
-          id="direccion"
-          name="direccion"
-          label="Direccion"
+          id="address"
+          name="address"
+          label="Address"
           Icon={LupitaIcon}
           width="100%"
         />
         <FlexRow>
           <FlexColumn>
             <label htmlFor="sport">Tipo de deporte</label>
-            <Select id="sport">
+            <Select id="sport" name="sport_type">
               <option value="">Select...</option>
+              <option>Soccer</option>
+              <option>Tennis</option>
             </Select>
           </FlexColumn>
           <FlexColumn>
             <label htmlFor="fieldType">Tipo de cancha</label>
-            <Select id="fieldType">
+            <Select id="fieldType" name="field_type">
               <option value="">Select...</option>
+              <option>Arcilla</option>
+              <option>Sintetic</option>
+              <option>Grass</option>
             </Select>
           </FlexColumn>
         </FlexRow>
+        <FlexRow>
         <Input
           type="text"
           placeholder="100"
-          id="hourlyCost"
-          name="hourlyCost"
+          id="price_hour"
+          name="price_hour"
           label="Costo por hora"
           Icon={DollarIcon}
           width="60%"
         />
+        <Input
+          type="number"
+          placeholder="8"
+          id="capacity"
+          name="capacity"
+          label="People Capacity"
+          Icon={CapacityIcon}
+          width="30%"
+        />
+        </FlexRow>
         <label htmlFor="comentarioAdicional">Comentario adicional</label>
-        <TextArea placeholder="Mi cancha es genial porque..." />
+        <TextArea placeholder="Mi cancha es genial porque..." id="summary" name="summary"/>
         <p>
           Añade alguna descripcion que facilite la informacion al usuario final
         </p>
 
         <SubTitle>Fotografia</SubTitle>
         <label htmlFor="pictures">Añade hasta 3 imagenes</label>
-        <input type="file" />
+        <input 
+        id="file"
+        type="file"
+        name="images"
+        accept="image/*" />
         <p>Only images, max 5mb</p>
-        <PhotoContainer>
-          <PhotoCard>
-            <p>No photos yet</p>
-          </PhotoCard>
-        </PhotoContainer>
-
         <button>Publica tu cancha</button>
       </Form>
     </>

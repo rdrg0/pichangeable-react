@@ -76,6 +76,8 @@ export default function LoginPage() {
     const datauser = await AxiosLogin({ email, password });
     await ctx.signIn(datauser.token, datauser.name, datauser.role);
     sessionStorage.setItem('token', await datauser.token)
+    sessionStorage.setItem('role', await datauser.role)
+    sessionStorage.setItem('id', await datauser.id)
     await AxiosIndexField();
     const dataFields = JSON.parse(sessionStorage.getItem("fieldsData"));
       dataFields.forEach(async(field) => {
@@ -89,7 +91,7 @@ export default function LoginPage() {
       history.push("/home");
     },2000);
   }
-
+  
   return (
     <>
       <Login>

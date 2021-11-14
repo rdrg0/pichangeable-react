@@ -80,6 +80,7 @@ export default function Signup() {
     const datauser = await AxiosCreateUser({ name, email, phone, role, password});
     await ctx.signIn(datauser.token, datauser.name, datauser.role);
     sessionStorage.setItem("token", await datauser.token)
+    sessionStorage.setItem('id', await datauser.id)
     console.log(await datauser);
     history.push("/home");
   }
