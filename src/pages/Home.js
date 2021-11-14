@@ -10,12 +10,10 @@ import { NavLink } from "react-router-dom";
 import { Hero } from "../component/Hero";
 import { AxiosIndexField } from "services/AxiosField";
 import cancha from "../component/UI/cancha8.jpg";
-import { useHistory } from "react-router-dom";
 
 export default function Home() {
   const [fields, setFields] = React.useState([]);
   const [bestFields, setBestFields] = React.useState([]);
-  const history = useHistory();
 
   React.useEffect(() => {
     async function fetchData() {

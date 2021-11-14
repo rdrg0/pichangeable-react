@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 /** @jsxImportSource @emotion/react */
-import { JoinIcon, LoginIcon, Logout, LupitaIcon } from "./UI/Icons";
+import { JoinIcon, LoginIcon, Logout, LupitaIcon,Publish } from "./UI/Icons";
 import { ButtonWhite, ButtonGreen } from "./UI/Buttons";
 import { TitleGreen, TitleGray } from "./UI/Typography";
 import logo from "./UI/logo.png";
@@ -14,7 +14,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   height: 100px;
   grid-template-columns: 60% 40%;
-  padding-right:5%;
+  padding-right:8%;
   flex-direction: row;
   align-items: center;
   background-color: white;
@@ -42,7 +42,7 @@ const ContainerSearch = styled.div`
     display: flex;
     align-items: center;
     gap: 12px;
-    width: 90%;
+    width: 70%;
     input{
         vertical-align: middle;
         position: relative;        
@@ -75,6 +75,10 @@ export default function Header(){
         history.push("/home");
     }
 
+    function goNewPage(){
+        history.push("/newfield");
+    }
+
     return(        
         <HeaderContainer style={{justifyContent: "space-between"}}>
             <div className="logo" onClick={returnHome}>
@@ -93,7 +97,14 @@ export default function Header(){
                     </NavLink>
                     <NavLink  style={{textDecoration:"none"}} to="/login">
                         <ButtonGreen><LoginIcon/>Login</ButtonGreen>
-                    </NavLink></>) : (<><div style={{width:"25%"}}></div><ButtonGreen onClick={handleLogout}><Logout/>Logout</ButtonGreen></>)}
+                            </NavLink></>) :  ( sessionStorage.getItem("role")==="1" || sessionStorage.getItem("role")==="admin" ? ( <>
+                                                        <ButtonGreen onClick={goNewPage}>
+                                                        <Publish/>Publish</ButtonGreen>
+                                                    <ButtonGreen onClick={handleLogout}>
+                                                        <Logout/>Logout</ButtonGreen></>) :(<>
+                                                        <div style={{width:"25%"}}></div>
+                                                    <ButtonGreen onClick={handleLogout}>
+                                                        <Logout/>Logout</ButtonGreen></>))}
             </div>
         </HeaderContainer>
         

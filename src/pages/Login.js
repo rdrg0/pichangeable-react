@@ -73,6 +73,7 @@ export default function LoginPage() {
     const datauser = await AxiosLogin({ email, password });
     await ctx.signIn(datauser.token, datauser.name, datauser.role);
     sessionStorage.setItem('token', await datauser.token)
+    sessionStorage.setItem('role', await datauser.role)
     history.push("/home");
   }
 

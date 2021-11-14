@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { DollarIcon, LupitaIcon } from "component/UI/Icons";
+import { DollarIcon, LupitaIcon, CapacityIcon } from "component/UI/Icons";
 import Input from "component/UI/Input";
 import React from "react";
 
@@ -151,6 +151,7 @@ function NewField() {
             </Select>
           </FlexColumn>
         </FlexRow>
+        <FlexRow>
         <Input
           type="text"
           placeholder="100"
@@ -160,6 +161,16 @@ function NewField() {
           Icon={DollarIcon}
           width="60%"
         />
+        <Input
+          type="number"
+          placeholder="8"
+          id="capacity"
+          name="capacity"
+          label="People Capacity"
+          Icon={CapacityIcon}
+          width="60%"
+        />
+        </FlexRow>
         <label htmlFor="comentarioAdicional">Comentario adicional</label>
         <TextArea placeholder="Mi cancha es genial porque..." />
         <p>
