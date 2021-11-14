@@ -74,6 +74,7 @@ export default function LoginPage() {
     await ctx.signIn(datauser.token, datauser.name, datauser.role);
     sessionStorage.setItem('token', await datauser.token)
     sessionStorage.setItem('role', await datauser.role)
+    sessionStorage.setItem('id', await datauser.id)
     history.push("/home");
   }
 
