@@ -28,9 +28,8 @@ export default function Home() {
 
   return (
     <>
-    <Container>
       <Header />
-      {sessionStorage.getItem("token") ? 
+      {!sessionStorage.getItem("token") ? 
       (
       <>
       <Hero/>
@@ -66,7 +65,7 @@ export default function Home() {
       </>
       ) : (
         <FieldsContainer>
-        {fields.map(field => (
+        {fields.slice(0, 6).map(field => (
           <ListItem
           image={cancha}
           price={field.price_hour}
@@ -80,16 +79,9 @@ export default function Home() {
         </FieldsContainer>
       )}
       <Footer />
-    </Container>
     </>
   );
 }
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
 
 const Slogan = styled.div`
   display: flex;
@@ -121,6 +113,7 @@ const LisContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  gap: 5%;
   padding: 5% 0% 5% 0%;
   margin-bottom: 0%;
   width: 75%;
@@ -128,11 +121,13 @@ const LisContainer = styled.div`
 
 const FieldsContainer = styled.div`
   display: grid;
-  grid-gap: 50px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  background-color: var(--white);
   justify-content: center;
+  justify-items: center;
+  gap: 5%;
+  padding: 0% 10% 0% 10%;
   align-items: center;
-  padding: 5% 0% 5% 0%;
-  margin-bottom: 0%;
   width: 100%;
 `;

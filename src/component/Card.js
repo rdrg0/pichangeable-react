@@ -8,7 +8,10 @@ const Card = styled.li`
   padding: unset;
   display: flex;
   flex-direction: column;
+  width: 75%;
+  height: 100%;
   align-items: center;
+  align-self: center;
   background: #ffffff;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

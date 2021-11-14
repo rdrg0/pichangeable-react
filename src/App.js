@@ -7,12 +7,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
 import EditField from "./pages/EditField";
 import { NotFound } from "./pages/NotFound";
-import Header from "./component/Header";
-import { Footer } from "./component/Footer";
-import DetailField from "./component/DetailField";
 import { SessionProvider } from "./context/SessionContext";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import { Calendar } from "component/Calendar";
+import SignFlow from "pages/SignFlow";
 
 const globalCSS = css`
   @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap");
@@ -45,16 +42,14 @@ const globalCSS = css`
 function App() {
   return (
     <>
-      <Header />
-      <DetailField />
-      <Footer />
       <Global styles={globalCSS} />
       <SessionProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Calendar} />
+            <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/signflow" component={SignFlow} />
             <Route path="/home" component={Home} />
             <ProtectedRoute path="/newfield" component={NewField} />
             <ProtectedRoute path="/editfield" component={EditField} />
