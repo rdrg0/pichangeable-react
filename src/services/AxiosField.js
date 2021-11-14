@@ -9,7 +9,10 @@ export const AxiosIndexField = () => {
       'Authorization': `Token token=${sessionStorage.getItem('token')}`
     }
   })
-  .then(response => response.data)
+  .then(response => {
+    sessionStorage.setItem('fieldsData', JSON.stringify(response.data));
+    return response.data;
+  })
   .catch(error => console.log(error.response));
 };
 
