@@ -142,12 +142,17 @@ function NewField() {
             <label htmlFor="sport">Tipo de deporte</label>
             <Select id="sport">
               <option value="">Select...</option>
+              <option>Soccer</option>
+              <option>Tennis</option>
             </Select>
           </FlexColumn>
           <FlexColumn>
             <label htmlFor="fieldType">Tipo de cancha</label>
             <Select id="fieldType">
               <option value="">Select...</option>
+              <option>Arcilla</option>
+              <option>Sintetic</option>
+              <option>Grass</option>
             </Select>
           </FlexColumn>
         </FlexRow>
@@ -168,7 +173,7 @@ function NewField() {
           name="capacity"
           label="People Capacity"
           Icon={CapacityIcon}
-          width="60%"
+          width="30%"
         />
         </FlexRow>
         <label htmlFor="comentarioAdicional">Comentario adicional</label>
