@@ -7,6 +7,7 @@ import {
 } from "../component/UI/Typography";
 import public_cancha from "../component/UI/busca_una_cancha.jpg";
 import buscador_cancha from "../component/UI/4619100.jpg";
+import { useHistory } from "react-router";
 
 const Sign = styled.div`
   display: flex;
@@ -60,29 +61,38 @@ const Card = styled.div`
 `;
 
 export default function SignFlow() {
+  const history= useHistory();
+  function goSignupAdmin(){
+    sessionStorage.setItem("role","1");
+    history.push("/signup");
+  }
+  function goSignupUser(){
+    sessionStorage.setItem("role","0");
+    history.push("/signup");
+  }
   return (
     <>
       <Sign>
         <Titles>
-          <FontMediumGray style={{ fontSize: 24 }}>
+          <FontMediumGray style={{ fontSize: 24, textAlign:"center" }}>
             Selecciona el perfil con el que te identificas
           </FontMediumGray>
-          <FontSizeBig style={{ fontSize: 44 }}>
+          <FontSizeBig style={{ fontSize: 44, textAlign:"center" }}>
             ¿Qué estás buscando?
           </FontSizeBig>
         </Titles>
         <Options>
-          <Card>
-            <img src={public_cancha} alt="buscador_cancha" />
-            <FontSizeMedium>Administrador</FontSizeMedium>
-            <FontMediumGray>
-              Tienes algún espacio deportivo que ofrecer
-            </FontMediumGray>
-          </Card>
-          <Card>
+            <Card onClick={goSignupAdmin}>
+              <img src={public_cancha} alt="publicador_cancha" />
+              <FontSizeMedium style={{ fontWeight: 600 }}>Administrador</FontSizeMedium>
+              <FontMediumGray>
+                Tienes algún espacio deportivo que ofrecer
+              </FontMediumGray>
+            </Card>
+          <Card  onClick={goSignupUser}>
             <img src={buscador_cancha} alt="buscador_cancha" />
-            <FontSizeMedium>Pichanguero</FontSizeMedium>
-            <FontMediumGray>Necesitas un campo deportivo</FontMediumGray>
+            <FontSizeMedium style={{ fontWeight: 600 }}>Pichanguero</FontSizeMedium>
+            <FontMediumGray style={{ textAlign:"center" }}>Necesitas un campo deportivo</FontMediumGray>
           </Card>
         </Options>
       </Sign>

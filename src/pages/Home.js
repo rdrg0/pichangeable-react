@@ -9,35 +9,52 @@ import ListItem from "../component/Card";
 import { NavLink } from "react-router-dom";
 import { Hero } from "../component/Hero";
 import { AxiosIndexField } from "services/AxiosField";
+import cancha from "../component/UI/cancha8.jpg";
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
   const [fields, setFields] = React.useState([]);
+  const [bestFields, setBestFields] = React.useState([]);
+  const history = useHistory();
 
   React.useEffect(() => {
     async function fetchData() {
       const result = await AxiosIndexField();
       setFields(result);
+      setBestFields(result.slice(0, 3));
     }
     fetchData();
-  });
-
-
-
+  }, []);
+  console.log(fields);
   
+
 
   return (
     <>
-    <Container>
       <Header />
+      {!sessionStorage.getItem("token") ? 
+      (
+      <>
       <Hero/>
       <BestFieldsContainer>
         <FontSizeBig style={{ color: "var(--light-green)" }}>
           ¡NUESTRAS CANCHAS MAS SOLICITADAS!
         </FontSizeBig>
         <LisContainer>
-          <ListItem />
-          <ListItem />
-          <ListItem />
+        {bestFields.map((field) => (
+          <ListItem
+             id={field.id}
+            image={cancha}
+            price_hour={field.price_hour}
+            name={field.name}
+            address={field.address}
+            field_type={field.field_type}
+            sport_type={field.sport_type}
+            location={field.ubication_id}
+            summary={field.summary}
+            capacity={field.capacity}
+          />
+        ))}
         </LisContainer>
       </BestFieldsContainer>
       <Slogan>
@@ -51,17 +68,29 @@ export default function Home() {
         </NavLink>
       </Slogan>
       <TeamProfiles />
+      </>
+      ) : (
+        <FieldsContainer >
+        {fields.slice(0, 6).map(field => (
+          <ListItem 
+          id={field.id}
+          image={cancha}
+          price_hour={field.price_hour}
+          name={field.name}
+          address={field.address}
+          field_type={field.field_type}
+          sport_type={field.sport_type}
+          location={field.ubication_id}
+          summary={field.summary}
+          capacity={field.capacity}
+          />
+        ))}
+        </FieldsContainer>
+      )}
       <Footer />
-    </Container>
     </>
   );
 }
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
 
 const Slogan = styled.div`
   display: flex;
@@ -83,7 +112,7 @@ const BestFieldsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 5% 0% 5% 0%;
+  padding: 5%;
   margin-bottom: 0%;
   width: 100%;
 `;
@@ -93,7 +122,23 @@ const LisContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  gap: 5%;
   padding: 5% 0% 5% 0%;
   margin-bottom: 0%;
   width: 75%;
+`;
+
+const FieldsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  background-color: var(--white);
+  justify-content: center;
+  justify-items: center;
+  gap: 5%;
+  padding: 0% 5% 0% 5%;
+  align-items: center;
+  width: 100%;
+  padding-bottom:8%;
+  padding-top: 3%
 `;

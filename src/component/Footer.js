@@ -67,7 +67,9 @@ const FooterContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 2%  5% 2% 5%;
+  padding: 3% 0% ;
+  gap: 150px;
+  height: 10%;
   `;
 
 

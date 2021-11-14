@@ -86,9 +86,7 @@ const DivBorder = styled.div`
     }
 `
 
-
-
-export default function DetailField(){
+export default function DetailField({name, sport_type, field_type, capacity, summary, price_hour, address}){
   const styles=useStyles();
   const [modal, setModal] = useState(false);
   const openModal = () =>{
@@ -129,24 +127,24 @@ export default function DetailField(){
         <Details style={{borderRight: "3px solid var(--light-gray)"}}>
             <ContainerVertical>
                 <ContainerImportant>
-                    <TitleGraySmaller>Tu Pelotita</TitleGraySmaller>
-                    <TitleGraySmaller>$15</TitleGraySmaller>
+                    <TitleGraySmaller>{name}</TitleGraySmaller>
+                    <TitleGraySmaller>S/.{price_hour}</TitleGraySmaller>
                 </ContainerImportant>
                 <ContainerImportant>
-                    <FontMediumGray>Jr. Ceramicas 234</FontMediumGray>
+                    <FontMediumGray>{address}</FontMediumGray>
                     <FontMediumGray>El Agustino</FontMediumGray>
                 </ContainerImportant>
             </ContainerVertical>
             <DivBorder>
-                    <div><SportIcon/><TitleGraySmaller>Soccer</TitleGraySmaller></div>
-                    <div><FieldIcon/><TitleGraySmaller>Grass</TitleGraySmaller></div>
-                    <div><PersonIcon/><TitleGraySmaller>11-11</TitleGraySmaller></div>
+                    <div><SportIcon/><TitleGraySmaller>{sport_type}</TitleGraySmaller></div>
+                    <div><FieldIcon/><TitleGraySmaller>{field_type}</TitleGraySmaller></div>
+                    <div><PersonIcon/><TitleGraySmaller>{capacity}-{capacity}</TitleGraySmaller></div>
             </DivBorder>
             <img src={cancha} alt="image_de_cancha"/>
             <ContainerVertical>
                 <FontSizeBig style={{color:"var(--dark-green)"}}>Acerca de la cancha...</FontSizeBig>
             <FontMediumGray>
-            Unfortunately this sport and recreation facility currently does offer instant online booking via pitchbooking.com To speak with a member of staff at Whitechapel Sports Centre about the rental of their facilities, you will need to reach out directly via the contact details we have listed for Whitechapel Sports Centre, 55 Durward Street, London, E1 5BA.
+            {summary}
             </FontMediumGray>
             </ContainerVertical>
         </Details>
