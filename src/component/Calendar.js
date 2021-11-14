@@ -16,11 +16,12 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import TextField from "@mui/material/TextField";
 import DatePicker from "@mui/lab/DatePicker";
-import { GetDate } from "../utils/GetDate";
+import { GetDate, GetDateFormat } from "../utils/GetDate";
 import Popover from "@mui/material/Popover";
 import TimePicker from "@mui/lab/TimePicker";
 import { Button } from "@material-ui/core";
 import { ButtonGreen } from "../component/UI/Buttons";
+import { AxiosCreateReservation } from "services/AxiosReservation";
 
 const schedulerData = [
   {
@@ -92,11 +93,11 @@ export const Calendar = () => {
   const [startTime, setStartTime] = React.useState(null);
   const [endTime, setEndTime] = React.useState(null);
 
-  function clickModalReservation(e) {
-    e.preventDefault();
-    console.log(e.target.value);
-    console.log("aqui");
-  }
+  // function clickModalReservation(e) {
+  //   e.preventDefault();
+  //   console.log(e.target.value);
+  //   console.log("aqui");
+  // }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -106,7 +107,26 @@ export const Calendar = () => {
   const handleClose = (e) => {
     setAnchorEl(null);
   };
+  
+  const sendDataReservation = async (e) => {
+    e.preventDefault();
 
+    function addZero(i) {
+      if (i < 10) {i = "0" + i}
+      return i;
+    }
+
+    console.log(GetDateFormat(value), addZero(startTime.getHours()), addZero(endTime.getHours()));
+    // 01/03/2020 , 01:00 , 02:00
+    let datareservation = {
+      start_date_hour: startTime,
+      end_date_hour: endTime,
+      total: 1000,
+      field_id: 11,
+    };
+    // GetDateFormat(value), addZero(startTime.getHours()), addZero(endTime.getHours())
+    await AxiosCreateReservation(datareservation);
+  }
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
@@ -126,7 +146,7 @@ export const Calendar = () => {
         <Paper onClick={handleClick} aria-describedby={id}>
           <Scheduler data={schedulerData}>
             <ViewState currentDate={value} />
-            <WeekView startDayHour={9} endDayHour={23} />
+            <DayView startDayHour={9} endDayHour={23} />
             <Appointments />
           </Scheduler>
           <Popover
@@ -167,7 +187,9 @@ export const Calendar = () => {
                 // value={ctx.session.email}
                 // onChange={ctx.handleChangeLogin}
               ></Input>
+              <div onClick={sendDataReservation}>
               <ButtonGreen> Enviar reserva</ButtonGreen>
+              </div>
               <p>Press "esc" for exit</p>
             </FormReservation>
           </Popover>

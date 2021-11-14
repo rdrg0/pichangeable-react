@@ -48,9 +48,10 @@ function App() {
       <SessionProvider>
         <Router>
           <Switch>
-            <Route exact path="/" component={Calendar} />
+            <Route exact path="/" component={Login} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/calendar" component={Calendar} />
             <Route path="/signflow" component={SignFlow} />
             <Route path="/detailfield" component={DetailFieldPage} />
             <Route path="/home" component={Home} />
