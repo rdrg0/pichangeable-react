@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 /** @jsxImportSource @emotion/react */
-import { FontSizeBig, FontSizeMedium } from "./UI/Typography";
+import { FontSizeMedium } from "./UI/Typography";
 import { FieldIcon, SportIcon, LocationIcon } from "./UI/Icons";
 import { useHistory } from "react-router";
 
@@ -64,8 +64,6 @@ const Card = styled.li`
 export default function ListItem({id,image, price_hour, name, address, field_type, sport_type, location,summary,capacity}) {
   const history = useHistory();
   function ShowDetails(e) {
-    // let id=e.target.id;
-    // console.log(id,image, price_hour, name, address, field_type, sport_type, location,summary,capacity);
     let field={id,image, price_hour, name, address, field_type, sport_type, location,summary,capacity};
     sessionStorage.setItem("selectedField", JSON.stringify(field));
     history.push("/detailfield")
@@ -77,7 +75,7 @@ export default function ListItem({id,image, price_hour, name, address, field_typ
           <img src={image} alt="imagen de una cancha" />
         </div>
         <div className="information">
-          <FontSizeBig>${price_hour}</FontSizeBig>
+          <FontSizeMedium>S/ {price_hour}</FontSizeMedium>
           <FontSizeMedium>{name.charAt(0).toUpperCase() + name.slice(1)}</FontSizeMedium>
         </div>
         <div className="address">

@@ -64,10 +64,13 @@ const ContainerSearch = styled.div`
 `;
 
 
-export default function Header(){
+export default function Header({filter, value}){
     const history = useHistory();
+
     function handleLogout(){
         sessionStorage.removeItem("token");
+        sessionStorage.removeItem("fieldAllData");
+        sessionStorage.removeItem("fieldData");
         history.push("/home");
     }
     
@@ -89,7 +92,7 @@ export default function Header(){
             <div className="buttons">
                 <ContainerSearch>
                     <label htmlFor="search"><LupitaIcon /></label>
-                    <input type="search" id="search" placeholder="Find your field ... "/>
+                    <input onChange={filter} value={value} type="search" id="search" placeholder="Find your field ... "/>
                 </ContainerSearch>
                 { !sessionStorage.getItem("token")===true ?
                 (<><NavLink style={{textDecoration:"none"}} to="/signflow">

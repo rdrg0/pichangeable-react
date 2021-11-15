@@ -2,13 +2,10 @@ import * as React from "react";
 import Paper from "@material-ui/core/Paper";
 import {
   ViewState,
-  EditingState,
-  IntegratedEditing,
 } from "@devexpress/dx-react-scheduler";
 import {
   Scheduler,
   DayView,
-  WeekView,
   Appointments,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import styled from "@emotion/styled";
@@ -19,10 +16,8 @@ import DatePicker from "@mui/lab/DatePicker";
 import { GetDate, GetDateFormat } from "../utils/GetDate";
 import Popover from "@mui/material/Popover";
 import TimePicker from "@mui/lab/TimePicker";
-import { Button } from "@material-ui/core";
 import { ButtonGreen } from "../component/UI/Buttons";
 import { AxiosCreateReservation } from "services/AxiosReservation";
-import { convertNeSwToNwSe } from "google-map-react";
 import { useHistory } from "react-router";
 
 const schedulerData = [

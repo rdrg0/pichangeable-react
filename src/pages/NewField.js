@@ -131,15 +131,6 @@ const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const PhotoContainer = styled.div`
-  display: flex;
-  gap: 8px;
-  padding: 8px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-  height: 136px;
-  background: #f5f5f6;
-`;
 
 function NewField() {
   const history= useHistory();
@@ -154,8 +145,7 @@ function NewField() {
     let summary = e.target.elements.summary.value;
     let price_hour=e.target.elements.price_hour.value;
       let sport_type="soccer"
-      let field_type=e.target.elements.field_type.value;
-      //let user_id=sessionStorage.getItem("id")                                                                                        
+      let field_type=e.target.elements.field_type.value;                                                                                      
       let ubication = e.target.elements.ubication.value;
       let ubication_id = ubications[ubication];
       console.log(ubication_id)
@@ -176,8 +166,6 @@ function NewField() {
       forminfo.append("ubication_id", ubication_id);
       forminfo.append("published_at", time_now);
       forminfo.append("images", images);
-      console.log(forminfo);
-  // AxiosCreateField(forminfo).then(data => console.log(data));
     
   await AxiosCreateField(forminfo).then(data => console.log(data));
   await AxiosIndexField();
