@@ -22,6 +22,8 @@ import TimePicker from "@mui/lab/TimePicker";
 import { Button } from "@material-ui/core";
 import { ButtonGreen } from "../component/UI/Buttons";
 import { AxiosCreateReservation } from "services/AxiosReservation";
+import { convertNeSwToNwSe } from "google-map-react";
+import { useHistory } from "react-router";
 
 const schedulerData = [
   {
@@ -93,6 +95,8 @@ export const Calendar = () => {
   const [startTime, setStartTime] = React.useState(null);
   const [endTime, setEndTime] = React.useState(null);
 
+  const history = useHistory();
+
   // function clickModalReservation(e) {
   //   e.preventDefault();
   //   console.log(e.target.value);
@@ -116,16 +120,28 @@ export const Calendar = () => {
       return i;
     }
 
+    const DataField = JSON.parse(sessionStorage.getItem("selectedField"));
+
     console.log(GetDateFormat(value), addZero(startTime.getHours()), addZero(endTime.getHours()));
     // 01/03/2020 , 01:00 , 02:00
+
+    console.log(DataField.id);
+
+
     let datareservation = {
-      start_date_hour: startTime,
-      end_date_hour: endTime,
-      total: 1000,
-      field_id: 11,
+      start_date_hour: `${GetDateFormat(value)} ${addZero(startTime.getHours())}:${addZero(startTime.getMinutes())}`,
+      end_date_hour: `${GetDateFormat(value)} ${addZero(endTime.getHours())}:${addZero(endTime.getMinutes())}`,
+      total: DataField.price_hour*(endTime.getHours() - startTime.getHours()),
+      field_id: parseInt(DataField.id),
     };
+
+    // console.log(`${GetDateFormat(value)} ${addZero(startTime.getHours())}:${addZero(startTime.getMinutes())}`);
+    // console.log(`${GetDateFormat(value)} ${addZero(endTime.getHours())}:${addZero(endTime.getMinutes())}`);
+
+    console.log(datareservation);
     // GetDateFormat(value), addZero(startTime.getHours()), addZero(endTime.getHours())
     await AxiosCreateReservation(datareservation);
+    history.push("/home");
   }
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
