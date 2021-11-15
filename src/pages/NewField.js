@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { ButtonGreen } from "component/UI/Buttons";
 import { DollarIcon, LupitaIcon, CapacityIcon } from "component/UI/Icons";
 import Input from "component/UI/Input";
+import { months, ubications } from "Constants";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { AxiosCreateField, AxiosIndexField, AxiosShowField } from "services/AxiosField";
@@ -144,8 +145,17 @@ function NewField() {
     let summary = e.target.elements.summary.value;
     let price_hour=e.target.elements.price_hour.value;
       let sport_type="soccer"
-      let field_type=e.target.elements.field_type.value;                                                                                     
-      let ubication_id = "3"
+      let field_type=e.target.elements.field_type.value;                                                                                      
+      let ubication = e.target.elements.ubication.value;
+      let ubication_id = ubications[ubication];
+      console.log(ubication_id)
+      let published_at= new Date();
+      let day = published_at.getDate()
+      let year = published_at.getFullYear()
+      let month = published_at.getMonth()
+      let time_now = day+"-"+months.indexOf(month)+"-"+year
+      console.log(time_now);
+      console.log(typeof time_now);
       forminfo.append("name", name);
       forminfo.append("sport_type", sport_type);
       forminfo.append("address", address);
@@ -154,9 +164,8 @@ function NewField() {
       forminfo.append("field_type", field_type);
       forminfo.append("summary", summary);
       forminfo.append("ubication_id", ubication_id);
-      forminfo.append("published_at", "12-12-2021");
+      forminfo.append("published_at", time_now);
       forminfo.append("images", images);
-    console.log(forminfo);
     
   await AxiosCreateField(forminfo).then(data => console.log(data));
   await AxiosIndexField();
@@ -196,20 +205,25 @@ function NewField() {
             <label htmlFor="sport">Tipo de deporte</label>
             <Select id="sport" name="sport_type">
               <option value="">Select...</option>
-              <option>soccer</option>
-              <option>tennis</option>
+              <option>Soccer</option>
+              <option>Tennis</option>
             </Select>
           </FlexColumn>
           <FlexColumn>
-              <Input
-              type="string"
-              placeholder="100"
-              id="field_type"
-              name="field_type"
-              label="Field type"
-              Icon={DollarIcon}
-              width="60%"
-            />
+            <label htmlFor="field">Tipo de Cancha</label>
+            <Select id="field" name="field_type">
+              <option value="">Select...</option>
+              <option>Arcilla</option>
+              <option>Sintetic</option>
+              <option>Grass</option>
+            </Select>
+          </FlexColumn>
+          <FlexColumn>
+            <label htmlFor="ubication">Distric of Lima</label>
+            <Select id="ubication" name="ubication">
+              <option value="">Select...</option>
+              {Object.keys(ubications).map((ubication) => <option>{ubication}</option>)}
+            </Select>
           </FlexColumn>
         </FlexRow>
         <FlexRow>

@@ -6,7 +6,6 @@ import { ButtonWhite, ButtonGreen } from "./UI/Buttons";
 import { TitleGreen, TitleGray } from "./UI/Typography";
 import logo from "./UI/logo.png";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 import { useHistory } from 'react-router';
 
 const HeaderContainer = styled.div`
