@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
+import { ButtonGreen } from "component/UI/Buttons";
 import { DollarIcon, LupitaIcon, CapacityIcon } from "component/UI/Icons";
 import Input from "component/UI/Input";
-import { name } from "google-map-react";
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { AxiosCreateField } from "services/AxiosField";
+import { AxiosCreateField, AxiosIndexField, AxiosShowField } from "services/AxiosField";
 
 const Container = styled.div`
     display: flex;
@@ -142,7 +142,6 @@ const PhotoContainer = styled.div`
 
 function NewField() {
   const history= useHistory();
-  const [item,setItem]=useState(null);
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(e.target.elements)
@@ -173,7 +172,15 @@ function NewField() {
   // AxiosCreateField(forminfo).then(data => console.log(data));
     
   await AxiosCreateField(forminfo).then(data => console.log(data));
-                                                                    //history.push("/home");
+  await AxiosIndexField();
+  let dataAllFields=[];
+    const dataFields = JSON.parse(await sessionStorage.getItem("fieldsData"));
+      dataFields.forEach(async(field) => {
+        const data = await AxiosShowField(field.id);
+        dataAllFields.push(await data);
+        sessionStorage.setItem("fieldsAllData", await JSON.stringify(dataAllFields));
+      });
+  history.push("/home");
                                                                   }
          
   return (
@@ -252,7 +259,7 @@ function NewField() {
         name="images_data"
         accept="image/*"/>
         <p>Only images, max 5mb</p>
-        <button>Publica tu cancha</button>
+        <ButtonGreen>Publica tu cancha</ButtonGreen>
       </Form>
     </>
   );
