@@ -72,7 +72,6 @@ export default function LoginPage() {
   async function loginUser(e) {
     e.preventDefault();
     const { email, password } = ctx.session;
-    console.log(email, password);
     const datauser = await AxiosLogin({ email, password });
     await ctx.signIn(datauser.token, datauser.name, datauser.role);
     sessionStorage.setItem('token', await datauser.token)
@@ -83,11 +82,9 @@ export default function LoginPage() {
       dataFields.forEach(async(field) => {
         const data = await AxiosShowField(field.id);
         dataAllFields.push(await data);
-        console.log("Por primera vez");
       });
     setTimeout(function(){
       sessionStorage.setItem("fieldsAllData", JSON.stringify(dataAllFields));
-      console.log("Por segunda vez");
       history.push("/home");
     },2000);
   }

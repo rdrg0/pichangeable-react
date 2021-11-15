@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../component/Header";
 import { Footer } from "../component/Footer";
 import { TeamProfiles } from "../component/TeamProfiles";
@@ -8,14 +8,16 @@ import { ButtonWhite } from "../component/UI/Buttons";
 import ListItem from "../component/Card";
 import { NavLink } from "react-router-dom";
 import { Hero } from "../component/Hero";
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import cancha1 from "../component/UI/cancha7.jpg";
 import cancha2 from "../component/UI/cancha8.jpg";
 import cancha3 from "../component/UI/cancha11.jpg";
 
 export default function Home() {
   const [fields, setFields] = React.useState(JSON.parse(sessionStorage.getItem("fieldsAllData")));
-  const history = useHistory();
+  const [query, setQuery] = useState("");
+  const [currentFilter, setCurrentFilter] = useState("");
+  const [filteredFields, setFilteredFields] = useState([]);
 
   const bestFields = [ 
     {id: 1000, ubication_id: 35, name: 'All Sport',sport_type:'soccer', field_type: 'sintetic', capacity: 9,
@@ -29,9 +31,33 @@ export default function Home() {
     address: 'Av Indescente 999', images: cancha3},
   ];
 
+  function searchField(e) {
+    const { value } = e.target;
+    setQuery(value);
+    setCurrentFilter("");
+    setFilteredFields(
+        JSON.parse(sessionStorage.getItem("fieldsAllData")).filter((field) => 
+        field.name.toLowerCase().includes(value.toLowerCase()) || 
+        field.summary.toLowerCase().includes(value.toLowerCase()) ||
+        field.price_hour.toString().includes(value.toLowerCase()) ||
+        field.address.toLowerCase().includes(value.toLowerCase()) ||
+        field.sport_type.toLowerCase().includes(value.toLowerCase()) ||
+        field.field_type.toLowerCase().includes(value.toLowerCase())
+        )
+    );
+    console.log(filteredFields);
+  }
+
+  useEffect(() => {
+    if (filteredFields.length === 0) {
+      setFilteredFields(fields);
+    }
+    setFields(filteredFields);
+  }, [filteredFields]);
+
   return (
     <>
-      <Header />
+      <Header filter={searchField} value={query}/>
       {!sessionStorage.getItem("token") ? 
       (
       <>
@@ -70,11 +96,11 @@ export default function Home() {
       <TeamProfiles />
       </>
       ) : (
-        <FieldsContainer >
-        {fields && fields.map(field => (
+        <FieldsContainer className='scroll'>
+        {fields?.map(field => (
           <ListItem 
           id={field.id}
-          image={cancha1}
+          image={field.images[0].image_url}
           price_hour={field.price_hour}
           name={field.name}
           address={field.address}
@@ -131,7 +157,6 @@ const LisContainer = styled.div`
 const FieldsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   background-color: var(--white);
   justify-content: center;
   justify-items: center;
@@ -140,5 +165,22 @@ const FieldsContainer = styled.div`
   align-items: center;
   width: 100%;
   padding-bottom:8%;
-  padding-top: 3%
+  padding-top: 3%;
+  height: 80%;
+
+  .scroll {
+    height: 500px;
+    overflow-y: none;
+    overflow-x: hidden;
+  }
+
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+/* Hide scrollbar for IE, Edge and Firefox */
+  .scroll {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 `;
