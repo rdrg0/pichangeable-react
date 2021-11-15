@@ -64,7 +64,8 @@ const Card = styled.li`
 export default function ListItem({id,image, price_hour, name, address, field_type, sport_type, location,summary,capacity}) {
   const history = useHistory();
   function ShowDetails(e) {
-    let id=e.target.id;
+    // let id=e.target.id;
+    // console.log(id,image, price_hour, name, address, field_type, sport_type, location,summary,capacity);
     let field={id,image, price_hour, name, address, field_type, sport_type, location,summary,capacity};
     sessionStorage.setItem("selectedField", JSON.stringify(field));
     history.push("/detailfield")

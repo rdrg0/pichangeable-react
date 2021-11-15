@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Modal } from "@material-ui/core";
 import { useState } from "react";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme)=>({
     modal:{
@@ -89,8 +90,13 @@ const DivBorder = styled.div`
 export default function DetailField({name, sport_type, field_type, capacity, summary, price_hour, address}){
   const styles=useStyles();
   const [modal, setModal] = useState(false);
+  const history = useHistory();
   const openModal = () =>{
       setModal(!modal);
+  }
+
+  const GotoPageReservation = () => {
+    history.push("/calendar");
   }
   const body = (
       <div className={styles.modal} 
@@ -146,6 +152,7 @@ export default function DetailField({name, sport_type, field_type, capacity, sum
             <FontMediumGray>
             {summary.charAt(0).toUpperCase() + summary.slice(1)}
             </FontMediumGray>
+            <ButtonGreen onClick={GotoPageReservation}>RESERVATION</ButtonGreen>
             </ContainerVertical>
         </Details>
         
