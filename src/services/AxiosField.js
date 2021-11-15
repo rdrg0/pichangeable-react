@@ -28,6 +28,8 @@ export const AxiosShowField = (id) => {
 };
 
 export const AxiosCreateField = (dataform) => {
+  console.log(typeof dataform)
+  console.log( dataform)
   return axios('/fields', {
     method: 'POST',
     headers: {
