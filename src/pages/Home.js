@@ -74,7 +74,7 @@ export default function Home() {
         {fields && fields.map(field => (
           <ListItem 
           id={field.id}
-          image={field.images[0].image_url}
+          image={cancha1}
           price_hour={field.price_hour}
           name={field.name}
           address={field.address}

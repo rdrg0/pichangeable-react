@@ -1,10 +1,36 @@
 import styled from "@emotion/styled";
+import { ButtonGreen } from "component/UI/Buttons";
 import { DollarIcon, LupitaIcon, CapacityIcon } from "component/UI/Icons";
 import Input from "component/UI/Input";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { AxiosCreateField } from "services/AxiosField";
+import { AxiosCreateField, AxiosIndexField, AxiosShowField } from "services/AxiosField";
 
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: 8px;
+    background-color: white;
+    height: 40px;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #68d391;
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-family: Inter;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+
+      :placeholder {
+        color: #8e8e8e;
+      }
+    }
+  `;
 const Title = styled.h2`
   margin: 32px 0px;
   font-family: Montserrat;
@@ -116,51 +142,60 @@ const PhotoContainer = styled.div`
 
 function NewField() {
   const history= useHistory();
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(e)
+    console.log(e.target.elements)
     let forminfo = new FormData();
-    let images = URL.createObjectURL(e.target.elements.images.files[0])
+    let images = e.target.elements.images_data.files[0];
     let name = e.target.elements.name.value;
     let address = e.target.elements.address.value;
     let capacity = e.target.elements.capacity.value;
     let summary = e.target.elements.summary.value;
     let price_hour=e.target.elements.price_hour.value;
-    let sport_type=e.target.elements.sport_type.value;
-    let field_type=e.target.elements.field_type.value;
-    let user_id=sessionStorage.getItem("id");
-    let ubication_id = "4"
-    forminfo.append("name", name);
-    forminfo.append("address", address);
-    forminfo.append("capacity", capacity);
-    forminfo.append("address", address);
-    forminfo.append("summary", summary);
-    forminfo.append("price_hour", price_hour);
-    forminfo.append("sport_type",sport_type);
-    forminfo.append("field_type", field_type)
-    forminfo.append("images", images)
-    forminfo.append("user_id", user_id)
-    console.log({name,address,capacity,sport_type,field_type,summary,price_hour,images,user_id,ubication_id});
-    console.log(forminfo.toString());
-    AxiosCreateField(forminfo).then(data => console.log(data));
-    history.push("/home");
-  }
-
-
+      let sport_type="soccer"
+      let field_type=e.target.elements.field_type.value;
+      let user_id=sessionStorage.getItem("id")                                                                                        
+      let ubication_id = "3"
+      let ubication = "El Agustino"
+      let published_at= new Date();
+      forminfo.append("name", name);
+      forminfo.append("sport_type", sport_type);
+      forminfo.append("address", address);
+      forminfo.append("capacity", capacity);
+      forminfo.append("price_hour", price_hour);
+      forminfo.append("field_type", field_type);
+      forminfo.append("summary", summary);
+      forminfo.append("ubication_id", ubication_id);
+      forminfo.append("published_at", "12-12-2021");
+      forminfo.append("images", images);
+    console.log(forminfo);
+  // AxiosCreateField(forminfo).then(data => console.log(data));
+    
+  await AxiosCreateField(forminfo).then(data => console.log(data));
+  await AxiosIndexField();
+  let dataAllFields=[];
+    const dataFields = JSON.parse(await sessionStorage.getItem("fieldsData"));
+      dataFields.forEach(async(field) => {
+        const data = await AxiosShowField(field.id);
+        dataAllFields.push(await data);
+        sessionStorage.setItem("fieldsAllData", await JSON.stringify(dataAllFields));
+      });
+  history.push("/home");
+                                                                  }
+         
   return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <Title>Registrar una nueva cancha</Title>
-        <Input
-          type="text"
-          placeholder="Enter the name of your field"
-          id="name"
-          name="name"
-          label="name"
-          Icon={LupitaIcon}
-          width="100%"
-        />
-        <Input
+        <>
+          <Form onSubmit={handleSubmit}>
+          <Title>Registrar una nueva cancha</Title>
+         <label>Name</label>
+          <Container>
+         <input type="text"
+         placeholder="Enter the name of your field"
+           id="name"
+         name="name"
+           /> 
+           </Container>
+          <Input
           type="text"
           placeholder="Start typing to autocomplete"
           id="address"
@@ -174,18 +209,20 @@ function NewField() {
             <label htmlFor="sport">Tipo de deporte</label>
             <Select id="sport" name="sport_type">
               <option value="">Select...</option>
-              <option>Soccer</option>
-              <option>Tennis</option>
+              <option>soccer</option>
+              <option>tennis</option>
             </Select>
           </FlexColumn>
           <FlexColumn>
-            <label htmlFor="fieldType">Tipo de cancha</label>
-            <Select id="fieldType" name="field_type">
-              <option value="">Select...</option>
-              <option>Arcilla</option>
-              <option>Sintetic</option>
-              <option>Grass</option>
-            </Select>
+              <Input
+              type="string"
+              placeholder="100"
+              id="field_type"
+              name="field_type"
+              label="Field type"
+              Icon={DollarIcon}
+              width="60%"
+            />
           </FlexColumn>
         </FlexRow>
         <FlexRow>
@@ -219,10 +256,10 @@ function NewField() {
         <input 
         id="file"
         type="file"
-        name="images"
-        accept="image/*" />
+        name="images_data"
+        accept="image/*"/>
         <p>Only images, max 5mb</p>
-        <button>Publica tu cancha</button>
+        <ButtonGreen>Publica tu cancha</ButtonGreen>
       </Form>
     </>
   );
