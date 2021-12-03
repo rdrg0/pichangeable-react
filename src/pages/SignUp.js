@@ -5,6 +5,7 @@ import { ButtonGreen } from "../component/UI/Buttons";
 import { AxiosCreateUser } from "services/AxiosUser";
 import { SessionContext } from "context/SessionContext";
 import { useHistory } from "react-router";
+import { AxiosIndexField, AxiosShowField } from "services/AxiosField";
 
 const PageSignUp = styled.div`
   display: flex;
@@ -68,6 +69,8 @@ export default function Signup() {
   const history= useHistory();
   const role= parseInt(sessionStorage.getItem('role')) 
   
+  let dataAllFields = [];
+
   async function createUser(e){
     e.preventDefault();
     console.log(e.target);
@@ -82,7 +85,16 @@ export default function Signup() {
     sessionStorage.setItem("token", await datauser.token)
     sessionStorage.setItem('id', await datauser.id)
     console.log(await datauser);
-    history.push("/home");
+    await AxiosIndexField();
+    const dataFields = JSON.parse(sessionStorage.getItem("fieldsData"));
+    dataFields.forEach(async(field) => {
+      const data = await AxiosShowField(field.id);
+      dataAllFields.push(await data);
+    });
+    setTimeout(function(){
+      sessionStorage.setItem("fieldsAllData", JSON.stringify(dataAllFields));
+      history.push("/home");
+    },2000);
   }
 
   return (
