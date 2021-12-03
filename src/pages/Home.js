@@ -49,7 +49,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (filteredFields.length === 0) {
+    if (filteredFields === null || filteredFields.length === 0) {
       setFilteredFields(fields);
     }
     setFields(filteredFields);
